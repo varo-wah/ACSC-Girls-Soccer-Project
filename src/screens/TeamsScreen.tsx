@@ -40,12 +40,14 @@ export default function TeamsScreen({ onSelectTeam, selectedTeamId }: TeamsScree
                 </div>
 
                 <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center p-3 border border-white/5 shadow-inner shadow-white/5">
-                  <img
-                    src={team.logo}
-                    alt={team.name}
-                    className="w-full h-full object-contain"
-                    referrerPolicy="no-referrer"
-                  />
+                  <div className={`w-full h-full rounded-full flex items-center justify-center ${team.id === 'fa' ? 'bg-white p-1' : ''}`}>
+                    <img
+                      src={team.logo}
+                      alt={team.name}
+                      className="w-full h-full object-contain"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
                 </div>
 
                 <div className="text-center w-full">

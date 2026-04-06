@@ -100,7 +100,9 @@ export default function MatchCard({ match, variant = 'default' }: MatchCardProps
         <div className={`flex flex-col items-center flex-1 ${isCompact ? 'gap-2' : 'gap-3'}`}>
           <div className={`${isFeatured ? 'w-16 h-16' : 'w-12 h-12'} rounded-full bg-white/5 flex items-center justify-center p-2 border border-white/5 shadow-inner shadow-white/5`}>
             {match.homeTeam ? (
-              <img src={match.homeTeam.logo} alt={match.homeTeam.name} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
+              <div className={`w-full h-full rounded-full flex items-center justify-center ${match.homeTeam?.id === 'fa' ? 'bg-white p-1' : ''}`}>
+                <img src={match.homeTeam.logo} alt={match.homeTeam.name} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
+              </div>
             ) : (
               <div className="w-full h-full rounded-full bg-white/10 flex items-center justify-center text-white/30 text-xs font-bold">?</div>
             )}
@@ -144,7 +146,9 @@ export default function MatchCard({ match, variant = 'default' }: MatchCardProps
         <div className={`flex flex-col items-center flex-1 ${isCompact ? 'gap-2' : 'gap-3'}`}>
           <div className={`${isFeatured ? 'w-16 h-16' : 'w-12 h-12'} rounded-full bg-white/5 flex items-center justify-center p-2 border border-white/5 shadow-inner shadow-white/5`}>
             {match.awayTeam ? (
-              <img src={match.awayTeam.logo} alt={match.awayTeam.name} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
+              <div className={`w-full h-full rounded-full flex items-center justify-center ${match.awayTeam?.id === 'fa' ? 'bg-white p-1' : ''}`}>
+                <img src={match.awayTeam.logo} alt={match.awayTeam.name} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
+              </div>
             ) : (
               <div className="w-full h-full rounded-full bg-white/10 flex items-center justify-center text-white/30 text-xs font-bold">?</div>
             )}

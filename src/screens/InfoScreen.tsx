@@ -121,7 +121,7 @@ export default function InfoScreen() {
 
               <div>
                 <a
-                  href="https://maps.app.goo.gl/tb2WbvZZ2Nhj2N4P6"
+                  href="https://maps.app.goo.gl/8x1oyjNKKzMRoxwg6"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-start gap-2 text-white text-sm font-bold hover:text-pink-300 transition-colors"

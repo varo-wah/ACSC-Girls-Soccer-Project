@@ -46,12 +46,14 @@ export default function TeamDetailScreen({ team, onClose }: TeamDetailScreenProp
             <div className="flex items-start justify-between gap-4">
               <div className="flex items-center gap-4 min-w-0">
                 <div className="w-16 h-16 rounded-full bg-white/6 border border-white/10 flex items-center justify-center p-3 shadow-inner shadow-white/5 shrink-0">
-                  <img
-                    src={team.logo}
-                    alt={team.name}
-                    className="w-full h-full object-contain"
-                    referrerPolicy="no-referrer"
-                  />
+                  <div className={`w-full h-full rounded-full flex items-center justify-center ${team.id === 'fa' ? 'bg-white p-1' : ''}`}>
+                    <img
+                      src={team.logo}
+                      alt={team.name}
+                      className="w-full h-full object-contain"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
                 </div>
 
                 <div className="min-w-0">

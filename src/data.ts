@@ -19,13 +19,13 @@ function createBadge(label: string, bg: string, fg = '#ffffff') {
 }
 
 export const TEAM_ASSETS: Record<string, string> = {
-  icsbk: 'https://res.cloudinary.com/dwvzomiwu/image/upload/q_auto/f_auto/v1775186185/image_7_yhrxuq.png',
-  icshk: 'https://res.cloudinary.com/dwvzomiwu/image/upload/q_auto/f_auto/v1775186185/image_5_ke39o1.png',
-  fa: 'https://res.cloudinary.com/dpgt445lg/image/upload/v1775201429/logo_-_Faith_Academy_Vanguard_1_b4ebqm.png',
+  icsbk: 'https://res.cloudinary.com/dwvzomiwu/image/upload/q_auto/f_auto/v1775186185/image_7_yhrxuq.jpg',
+  icshk: 'https://res.cloudinary.com/dwvzomiwu/image/upload/q_auto/f_auto/v1775186185/image_5_ke39o1.jpg',
+  fa: 'https://res.cloudinary.com/dpgt445lg/image/upload/v1775201429/logo_-_Faith_Academy_Vanguard_1_b4ebqm.jpg',
   sph: 'https://res.cloudinary.com/dpgt445lg/image/upload/v1775384563/image_13_obe33c.png',
   yiss: 'https://res.cloudinary.com/dpgt445lg/image/upload/v1775124628/image_10_1_lbxp2p.png',
-  gis: 'https://res.cloudinary.com/dwvzomiwu/image/upload/q_auto/f_auto/v1775186184/image_8_cmg9gj.png',
-  dalat: 'https://res.cloudinary.com/dwvzomiwu/image/upload/q_auto/f_auto/v1775186184/image_9_evbv58.png',
+  gis: 'https://res.cloudinary.com/dwvzomiwu/image/upload/q_auto/f_auto/v1775186184/image_8_cmg9gj.jpg',
+  dalat: 'https://res.cloudinary.com/dwvzomiwu/image/upload/q_auto/f_auto/v1775186184/image_9_evbv58.jpg',
   mac: 'https://res.cloudinary.com/dpgt445lg/image/upload/v1775201427/image_11_ymckyf.png',
 };
 
@@ -244,11 +244,9 @@ export const MATCHES: ScheduleItem[] = [
     time: '08:00',
     groupDate: 'Morning Matches',
     stage: 'Day 2',
-    status: 'Finished',
+    status: 'Upcoming',
     venue: 'Main Field',
     competitionLabel: 'Group Stage',
-    homeScore: 1,
-    awayScore: 5,
   },
   {
     id: 'm2',
@@ -260,11 +258,9 @@ export const MATCHES: ScheduleItem[] = [
     time: '08:00',
     groupDate: 'Morning Matches',
     stage: 'Day 2',
-    status: 'Finished',
+    status: 'Upcoming',
     venue: 'Side Field',
     competitionLabel: 'Group Stage',
-    homeScore: 2,
-    awayScore: 4,
   },
   {
     id: 'm3',
@@ -276,11 +272,9 @@ export const MATCHES: ScheduleItem[] = [
     time: '09:30',
     groupDate: 'Morning Matches',
     stage: 'Day 2',
-    status: 'Finished',
+    status: 'Upcoming',
     venue: 'Main Field',
     competitionLabel: 'Group Stage',
-    homeScore: 1,
-    awayScore: 2,
   },
   {
     id: 'm4',
