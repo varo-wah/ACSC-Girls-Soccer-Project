@@ -296,46 +296,54 @@ export default function StandingsScreen() {
                   <th className="px-4 py-3 font-medium text-center">W</th>
                   <th className="px-4 py-3 font-medium text-center">L</th>
                   <th className="px-4 py-3 font-medium text-center">D</th>
+                  <th className="px-4 py-3 font-medium text-center">Pts</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5">
                 <tr className="hover:bg-white/5 transition-colors">
                   <td className="px-4 py-3 font-mono text-white/40">1</td>
                   <td className="px-4 py-3 font-medium text-white flex items-center gap-2">
-                    <img src={TEAMS.dalat.logo} className="w-5 h-5 object-contain" />
-                    Dalat
+                    <img src={TEAMS.mac.logo} className="w-5 h-5 object-contain" />
+                    MAC
                   </td>
+                  <td className="px-4 py-3 text-white/80 text-center">1</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
-                  <td className="px-4 py-3 text-white/80 text-center">0</td>
+                  <td className="px-4 py-3 text-white/80 text-center">3</td>
                 </tr>
+
                 <tr className="hover:bg-white/5 transition-colors">
                   <td className="px-4 py-3 font-mono text-white/40">2</td>
                   <td className="px-4 py-3 font-medium text-white flex items-center gap-2">
-                    <img src={TEAMS.sph.logo} className="w-5 h-5 object-contain" />
-                    SPH
+                    <img src={TEAMS.icsbk.logo} className="w-5 h-5 object-contain" />
+                    ICS BKK
                   </td>
+                  <td className="px-4 py-3 text-white/80 text-center">1</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
-                  <td className="px-4 py-3 text-white/80 text-center">0</td>
+                  <td className="px-4 py-3 text-white/80 text-center">3</td>
                 </tr>
+
                 <tr className="hover:bg-white/5 transition-colors">
                   <td className="px-4 py-3 font-mono text-white/40">3</td>
                   <td className="px-4 py-3 font-medium text-white flex items-center gap-2">
-                    <img src={TEAMS.icshk.logo} className="w-5 h-5 object-contain" />
-                    ICS-HK
+                    <img src={TEAMS.dalat.logo} className="w-5 h-5 object-contain" />
+                    DALAT
                   </td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
+                  <td className="px-4 py-3 text-white/80 text-center">1</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
                 </tr>
+
                 <tr className="hover:bg-white/5 transition-colors">
                   <td className="px-4 py-3 font-mono text-white/40">4</td>
                   <td className="px-4 py-3 font-medium text-white flex items-center gap-2">
-                    <img src={TEAMS.icsbk.logo} className="w-5 h-5 object-contain" />
-                    ICS-BK
+                    <img src={TEAMS.fa.logo} className="w-5 h-5 object-contain" />
+                    FAITH
                   </td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
+                  <td className="px-4 py-3 text-white/80 text-center">1</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
                 </tr>
@@ -355,35 +363,39 @@ export default function StandingsScreen() {
                   <th className="px-4 py-3 font-medium text-center">W</th>
                   <th className="px-4 py-3 font-medium text-center">L</th>
                   <th className="px-4 py-3 font-medium text-center">D</th>
+                  <th className="px-4 py-3 font-medium text-center">Pts</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5">
                 <tr className="hover:bg-white/5 transition-colors">
                   <td className="px-4 py-3 font-mono text-white/40">1</td>
                   <td className="px-4 py-3 font-medium text-white flex items-center gap-2">
-                    <img src={TEAMS.mac.logo} className="w-5 h-5 object-contain" />
-                    MAC
+                    <img src={TEAMS.yiss.logo} className="w-5 h-5 object-contain" />
+                    YISS
                   </td>
+                  <td className="px-4 py-3 text-white/80 text-center">1</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
-                  <td className="px-4 py-3 text-white/80 text-center">0</td>
+                  <td className="px-4 py-3 text-white/80 text-center">3</td>
                 </tr>
                 <tr className="hover:bg-white/5 transition-colors">
                   <td className="px-4 py-3 font-mono text-white/40">2</td>
                   <td className="px-4 py-3 font-medium text-white flex items-center gap-2">
-                    <img src={TEAMS.yiss.logo} className="w-5 h-5 object-contain" />
-                    YISS
+                    <img src={TEAMS.gis.logo} className="w-5 h-5 object-contain" />
+                    GRACE
                   </td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
-                  <td className="px-4 py-3 text-white/80 text-center">0</td>
+                  <td className="px-4 py-3 text-white/80 text-center">1</td>
+                  <td className="px-4 py-3 text-white/80 text-center">1</td>
                 </tr>
                 <tr className="hover:bg-white/5 transition-colors">
                   <td className="px-4 py-3 font-mono text-white/40">3</td>
                   <td className="px-4 py-3 font-medium text-white flex items-center gap-2">
-                    <img src={TEAMS.gis.logo} className="w-5 h-5 object-contain" />
-                    GIS
+                    <img src={TEAMS.sph.logo} className="w-5 h-5 object-contain" />
+                    SPH
                   </td>
+                  <td className="px-4 py-3 text-white/80 text-center">0</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
@@ -391,9 +403,10 @@ export default function StandingsScreen() {
                 <tr className="hover:bg-white/5 transition-colors">
                   <td className="px-4 py-3 font-mono text-white/40">4</td>
                   <td className="px-4 py-3 font-medium text-white flex items-center gap-2">
-                    <img src={TEAMS.fa.logo} className="w-5 h-5 object-contain" />
-                    FA
+                    <img src={TEAMS.icshk.logo} className="w-5 h-5 object-contain" />
+                    ICS HK
                   </td>
+                  <td className="px-4 py-3 text-white/80 text-center">0</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
