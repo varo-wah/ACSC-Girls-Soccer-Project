@@ -5,13 +5,14 @@ import { ScheduleItem, Match } from '../types';
 interface MatchCardProps {
   match: ScheduleItem;
   variant?: 'default' | 'compact' | 'featured';
+  highlightLive?: boolean;
   key?: string | number;
 }
 
 function statusClasses(status: Match['status']) {
   switch (status) {
     case 'Live':
-      return 'bg-red-500/14 text-red-300 border-red-400/20';
+      return 'bg-red-500/20 text-red-200 border-red-400/40 shadow-[0_0_16px_rgba(239,68,68,0.35)]';
     case 'Finished':
       return 'bg-emerald-500/14 text-emerald-300 border-emerald-400/20';
     default:
@@ -19,7 +20,7 @@ function statusClasses(status: Match['status']) {
   }
 }
 
-export default function MatchCard({ match, variant = 'default' }: MatchCardProps) {
+export default function MatchCard({ match, variant = 'default', highlightLive = false }: MatchCardProps) {
   const isFeatured = variant === 'featured';
   const isCompact = variant === 'compact';
 
@@ -67,9 +68,11 @@ export default function MatchCard({ match, variant = 'default' }: MatchCardProps
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.2 }}
-      className={`ucl-panel border border-white/8 ${
-        isFeatured ? 'rounded-[24px] p-5' : 'rounded-[22px] p-4'
-      }`}
+      className={`ucl-panel ${
+        highlightLive
+          ? 'border border-red-400/40 shadow-[0_0_28px_rgba(239,68,68,0.28)] animate-pulse'
+          : 'border border-white/8'
+      } ${isFeatured ? 'rounded-[24px] p-5' : 'rounded-[22px] p-4'}`}
     >
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">

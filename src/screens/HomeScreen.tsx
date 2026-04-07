@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Team } from '../types';
+import { Team, Match } from '../types';
 import { APP_COPY, HOME_FEATURED_MATCH, HOME_UPCOMING_MATCHES, HOME_FINISHED_MATCHES, TEAMS } from '../data';
 import MatchCard from '../components/MatchCard';
 import { PlayCircle, Bell } from 'lucide-react';
+import { MATCHES } from '../data';
 
 interface HomeScreenProps {
   onSelectTeam: (team: Team) => void;
@@ -11,6 +12,8 @@ interface HomeScreenProps {
 export default function HomeScreen({ onSelectTeam }: HomeScreenProps) {
   const [jakartaTime, setJakartaTime] = useState('');
   const [showRefreshPopup, setShowRefreshPopup] = useState(true);
+
+  const liveMatches = (MATCHES.filter((m) => m.type === 'match' && m.status === 'Live') as Match[]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -100,17 +103,23 @@ export default function HomeScreen({ onSelectTeam }: HomeScreenProps) {
       </div>
 
       <section className="px-4 mb-10">
-        <h2 className="text-[11px] font-bold text-white/30 uppercase tracking-[0.2em] mb-4 px-2">
-          {APP_COPY.heroLabel}
+        <h2 className={`text-[11px] font-bold uppercase tracking-[0.2em] mb-4 px-2 ${
+          liveMatches.length > 0 ? 'text-red-300 animate-pulse' : 'text-white/30'
+        }`}>
+          {liveMatches.length > 0 ? 'Live Match' : APP_COPY.heroLabel}
         </h2>
         <div className="relative">
-          <MatchCard match={HOME_FEATURED_MATCH} variant="featured" />
+          <MatchCard match={HOME_FEATURED_MATCH} variant="featured" highlightLive={liveMatches.length > 0} />
           <div className="absolute -bottom-4 left-1/2 -translate-x-1/2">
             <a 
               href="https://youtube.com/playlist?list=PLnDGQGJCZlGEzYGwG54Vu9jO4YT2G1uhS&si=kSQSHBFPkB1KHESL"
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-pink-600 hover:bg-pink-500 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-[0_0_20px_rgba(244,114,182,0.4)] transition-all"
+              className={`flex items-center gap-2 text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all ${
+                liveMatches.length > 0
+                  ? 'bg-red-500 hover:bg-red-400 shadow-[0_0_28px_rgba(239,68,68,0.75)] animate-pulse'
+                  : 'bg-pink-600 hover:bg-pink-500 shadow-[0_0_20px_rgba(244,114,182,0.4)]'
+              }`}
             >
               <PlayCircle className="w-4 h-4" />
               Watch Live
@@ -126,7 +135,11 @@ export default function HomeScreen({ onSelectTeam }: HomeScreenProps) {
         <div className="flex overflow-x-auto no-scrollbar px-4 gap-4 pb-4">
           {HOME_UPCOMING_MATCHES.map(match => (
             <div key={match.id} className="min-w-[300px]">
-              <MatchCard match={match} variant="compact" />
+              <MatchCard
+                match={match}
+                variant="compact"
+                highlightLive={liveMatches.some((liveMatch) => liveMatch.id === match.id)}
+              />
             </div>
           ))}
         </div>
