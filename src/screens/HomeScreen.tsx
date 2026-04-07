@@ -63,7 +63,7 @@ export default function HomeScreen({ onSelectTeam }: HomeScreenProps) {
                 <path d="M12 16.5v5"/>
               </svg>
             </div>
-            <div className="text-[11px] uppercase tracking-[0.24em] text-pink-300/80 whitespace-nowrap">
+            <div className="text-[11px] uppercase tracking-[0.16em] text-pink-300/80 leading-tight max-w-[140px] sm:max-w-none break-words">
               Asian Christian Schools Conference
             </div>
           </div>
