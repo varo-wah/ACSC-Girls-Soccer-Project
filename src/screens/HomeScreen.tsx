@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Team, Match } from '../types';
-import { APP_COPY, HOME_FEATURED_MATCH, HOME_UPCOMING_MATCHES, HOME_FINISHED_MATCHES, TEAMS } from '../data';
+import { APP_COPY, HOME_UPCOMING_MATCHES, HOME_FINISHED_MATCHES, TEAMS } from '../data';
 import MatchCard from '../components/MatchCard';
 import { PlayCircle, Bell } from 'lucide-react';
 import { MATCHES } from '../data';
@@ -9,11 +9,32 @@ interface HomeScreenProps {
   onSelectTeam: (team: Team) => void;
 }
 
+function getJakartaNow() {
+  const now = new Date();
+  const jakartaString = now.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' });
+  return new Date(jakartaString);
+}
+
+function getMatchStartInJakarta(match: Match) {
+  const [datePart, timePart] = match.date.split('T');
+  const cleanTime = (timePart || '00:00:00').replace('Z', '');
+  return new Date(`${datePart}T${cleanTime}`);
+}
+
+function getAutoLiveMatches(matches: Match[]) {
+  const now = getJakartaNow();
+
+  return matches.filter((match) => {
+    const start = getMatchStartInJakarta(match);
+    const end = new Date(start.getTime() + 2 * 60 * 60 * 1000);
+    return now >= start && now < end;
+  });
+}
+
 export default function HomeScreen({ onSelectTeam }: HomeScreenProps) {
   const [jakartaTime, setJakartaTime] = useState('');
   const [showRefreshPopup, setShowRefreshPopup] = useState(true);
-
-  const liveMatches = (MATCHES.filter((m) => m.type === 'match' && m.status === 'Live') as Match[]);
+  const [liveMatches, setLiveMatches] = useState<Match[]>([]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,6 +66,31 @@ export default function HomeScreen({ onSelectTeam }: HomeScreenProps) {
 
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    const updateLiveMatches = () => {
+      const matchOnly = MATCHES.filter((m) => m.type === 'match') as Match[];
+      const autoLive = getAutoLiveMatches(matchOnly);
+      setLiveMatches(autoLive);
+    };
+
+    updateLiveMatches();
+    const interval = setInterval(updateLiveMatches, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const upcomingNotLiveMatches = HOME_UPCOMING_MATCHES.filter(
+    (match) => !liveMatches.some((liveMatch) => liveMatch.id === match.id)
+  );
+
+  const topHeroMatches = liveMatches.length > 0
+    ? liveMatches.slice(0, 2)
+    : HOME_UPCOMING_MATCHES.slice(0, 2);
+
+  const topRowMatches = liveMatches.length > 0
+    ? upcomingNotLiveMatches.slice(0, 4)
+    : HOME_UPCOMING_MATCHES.slice(2, 6);
 
   return (
     <div className="pb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
@@ -102,42 +148,58 @@ export default function HomeScreen({ onSelectTeam }: HomeScreenProps) {
         </div>
       </div>
 
-      <section className="px-4 mb-10">
+      <section className="mb-10 px-4">
         <h2 className={`text-[11px] font-bold uppercase tracking-[0.2em] mb-4 px-2 ${
           liveMatches.length > 0 ? 'text-red-300 animate-pulse' : 'text-white/30'
         }`}>
-          {liveMatches.length > 0 ? 'Live Match' : APP_COPY.heroLabel}
+          {liveMatches.length > 0 ? 'Live Matches' : APP_COPY.heroLabel}
         </h2>
-        <div className="relative">
-          <MatchCard match={HOME_FEATURED_MATCH} variant="featured" highlightLive={liveMatches.length > 0} />
-          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2">
-            <a 
-              href="https://youtube.com/playlist?list=PLnDGQGJCZlGEzYGwG54Vu9jO4YT2G1uhS&si=kSQSHBFPkB1KHESL"
-              target="_blank" 
-              rel="noopener noreferrer"
-              className={`flex items-center gap-2 text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all ${
-                liveMatches.length > 0
-                  ? 'bg-red-500 hover:bg-red-400 shadow-[0_0_28px_rgba(239,68,68,0.75)] animate-pulse'
-                  : 'bg-pink-600 hover:bg-pink-500 shadow-[0_0_20px_rgba(244,114,182,0.4)]'
-              }`}
-            >
-              <PlayCircle className="w-4 h-4" />
-              Watch Live
-            </a>
-          </div>
+
+        <div className="flex overflow-x-auto no-scrollbar gap-4 pb-4">
+          {topHeroMatches.map((match) => (
+            <div key={match.id} className="min-w-[300px]">
+              <MatchCard
+                match={{
+                  ...match,
+                  status: liveMatches.some((liveMatch) => liveMatch.id === match.id) ? 'Live' : match.status,
+                }}
+                variant="featured"
+                highlightLive={liveMatches.some((liveMatch) => liveMatch.id === match.id)}
+              />
+            </div>
+          ))}
+        </div>
+
+        <div className="flex justify-center mt-1 mb-4">
+          <a
+            href="https://youtube.com/playlist?list=PLnDGQGJCZlGEzYGwG54Vu9jO4YT2G1uhS&si=kSQSHBFPkB1KHESL"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`flex items-center gap-2 text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all ${
+              liveMatches.length > 0
+                ? 'bg-red-500 hover:bg-red-400 shadow-[0_0_28px_rgba(239,68,68,0.75)] animate-pulse'
+                : 'bg-pink-600 hover:bg-pink-500 shadow-[0_0_20px_rgba(244,114,182,0.4)]'
+            }`}
+          >
+            <PlayCircle className="w-4 h-4" />
+            Watch Live
+          </a>
         </div>
       </section>
 
-      <section className="mb-10 mt-12">
+      <section className="mb-10 mt-6">
         <h2 className="text-[11px] font-bold text-white/30 uppercase tracking-[0.2em] mb-4 px-6">
           {APP_COPY.sectionUpcoming}
         </h2>
         <div className="flex overflow-x-auto no-scrollbar px-4 gap-4 pb-4">
-          {HOME_UPCOMING_MATCHES.map(match => (
+          {topRowMatches.map(match => (
             <div key={match.id} className="min-w-[300px]">
               <MatchCard
-                match={match}
-                variant="compact"
+                match={{
+                  ...match,
+                  status: liveMatches.some((liveMatch) => liveMatch.id === match.id) ? 'Live' : match.status,
+                }}
+                variant="featured"
                 highlightLive={liveMatches.some((liveMatch) => liveMatch.id === match.id)}
               />
             </div>

@@ -63,6 +63,8 @@ export default function MatchCard({ match, variant = 'default', highlightLive = 
     );
   }
 
+  const isLive = match.status === 'Live';
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
@@ -98,10 +100,16 @@ export default function MatchCard({ match, variant = 'default', highlightLive = 
         )}
       </div>
 
-      <div className="flex items-center justify-between gap-4">
+      <div className={`flex items-center ${isLive ? 'justify-center gap-10' : 'justify-between gap-4'}`}>
         {/* Home Team */}
         <div className={`flex flex-col items-center flex-1 ${isCompact ? 'gap-2' : 'gap-3'}`}>
-          <div className={`${isFeatured ? 'w-16 h-16' : 'w-12 h-12'} rounded-full bg-white/5 flex items-center justify-center p-2 border border-white/5 shadow-inner shadow-white/5`}>
+          <div className={`${
+            isLive
+              ? 'w-20 h-20'
+              : isFeatured
+                ? 'w-16 h-16'
+                : 'w-12 h-12'
+          } rounded-full bg-white/5 flex items-center justify-center p-2 border border-white/5 shadow-inner shadow-white/5`}>
             {match.homeTeam ? (
               <div className={`w-full h-full rounded-full flex items-center justify-center ${match.homeTeam?.id === 'fa' ? 'bg-white p-1' : ''}`}>
                 <img src={match.homeTeam.logo} alt={match.homeTeam.name} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
@@ -115,39 +123,41 @@ export default function MatchCard({ match, variant = 'default', highlightLive = 
           </span>
         </div>
 
-        {/* Score / Time */}
-        <div className="flex flex-col items-center min-w-[80px]">
-          {match.status === 'Upcoming' ? (
-            <div className="flex flex-col items-center gap-1">
-              <span className="text-xl font-bold text-white tracking-tight">{match.time}</span>
-              <div className="flex items-center gap-1 text-white/30">
-                <Clock3 className="w-3 h-3" />
-                <span className="text-[10px] font-bold">{match.displayDate}</span>
+        {!isLive && (
+          <div className="flex flex-col items-center min-w-[80px]">
+            {match.status === 'Upcoming' ? (
+              <div className="flex flex-col items-center gap-1">
+                <span className="text-xl font-bold text-white tracking-tight">{match.time}</span>
+                <div className="flex items-center gap-1 text-white/30">
+                  <Clock3 className="w-3 h-3" />
+                  <span className="text-[10px] font-bold">{match.displayDate}</span>
+                </div>
               </div>
-            </div>
-          ) : (
-            <div className="flex flex-col items-center gap-1">
-              <div className="flex items-center gap-3">
-                <span className={`${isFeatured ? 'text-3xl' : 'text-2xl'} font-bold text-white tracking-tighter`}>
-                  {match.homeScore}
-                </span>
-                <span className="text-white/20 font-bold">-</span>
-                <span className={`${isFeatured ? 'text-3xl' : 'text-2xl'} font-bold text-white tracking-tighter`}>
-                  {match.awayScore}
-                </span>
+            ) : (
+              <div className="flex flex-col items-center gap-1">
+                <div className="flex items-center gap-3">
+                  <span className={`${isFeatured ? 'text-3xl' : 'text-2xl'} font-bold text-white tracking-tighter`}>
+                    {match.homeScore}
+                  </span>
+                  <span className="text-white/20 font-bold">-</span>
+                  <span className={`${isFeatured ? 'text-3xl' : 'text-2xl'} font-bold text-white tracking-tighter`}>
+                    {match.awayScore}
+                  </span>
+                </div>
               </div>
-              {match.aggregateText && (
-                <span className="text-[10px] text-pink-300/60 font-bold uppercase tracking-wider">
-                  {match.aggregateText}
-                </span>
-              )}
-            </div>
-          )}
-        </div>
+            )}
+          </div>
+        )}
 
         {/* Away Team */}
         <div className={`flex flex-col items-center flex-1 ${isCompact ? 'gap-2' : 'gap-3'}`}>
-          <div className={`${isFeatured ? 'w-16 h-16' : 'w-12 h-12'} rounded-full bg-white/5 flex items-center justify-center p-2 border border-white/5 shadow-inner shadow-white/5`}>
+          <div className={`${
+            isLive
+              ? 'w-20 h-20'
+              : isFeatured
+                ? 'w-16 h-16'
+                : 'w-12 h-12'
+          } rounded-full bg-white/5 flex items-center justify-center p-2 border border-white/5 shadow-inner shadow-white/5`}>
             {match.awayTeam ? (
               <div className={`w-full h-full rounded-full flex items-center justify-center ${match.awayTeam?.id === 'fa' ? 'bg-white p-1' : ''}`}>
                 <img src={match.awayTeam.logo} alt={match.awayTeam.name} className="w-full h-full object-contain" referrerPolicy="no-referrer" />

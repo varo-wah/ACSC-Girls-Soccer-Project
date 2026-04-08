@@ -821,7 +821,9 @@ export const BRACKET_DATA: BracketRound[] = [
 export const HOME_FEATURED_MATCH = MATCHES.find(
   (match) => match.type === 'match' && match.status === 'Upcoming'
 ) as Match;
-export const HOME_UPCOMING_MATCHES = MATCHES.filter((match) => match.type === 'match' && match.status === 'Upcoming').slice(0, 4) as Match[];
+export const HOME_UPCOMING_MATCHES = MATCHES.filter(
+  (match) => match.type === 'match' && match.status === 'Upcoming'
+) as Match[];
 export const HOME_FINISHED_MATCHES = MATCHES
   .filter((match) => match.type === 'match' && match.status === 'Finished') as Match[];
 
