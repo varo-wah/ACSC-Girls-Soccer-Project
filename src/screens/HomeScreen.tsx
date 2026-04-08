@@ -38,7 +38,6 @@ export default function HomeScreen({ onSelectTeam }: HomeScreenProps) {
   const [jakartaTime, setJakartaTime] = useState('');
   const [showRefreshPopup, setShowRefreshPopup] = useState(true);
   const [liveMatches, setLiveMatches] = useState<Match[]>([]);
-  const forceLiveMatchIds = ['m4'];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,20 +74,7 @@ export default function HomeScreen({ onSelectTeam }: HomeScreenProps) {
     const updateLiveMatches = () => {
       const matchOnly = MATCHES.filter((m) => m.type === 'match') as Match[];
       const autoLive = getAutoLiveMatches(matchOnly);
-
-      const forcedLive = matchOnly.filter((match) =>
-        forceLiveMatchIds.includes(match.id) && match.status !== 'Finished'
-      );
-
-      const mergedLive = [...autoLive];
-
-      forcedLive.forEach((forcedMatch) => {
-        if (!mergedLive.some((m) => m.id === forcedMatch.id)) {
-          mergedLive.push(forcedMatch);
-        }
-      });
-
-      setLiveMatches(mergedLive);
+      setLiveMatches(autoLive);
     };
 
     updateLiveMatches();
@@ -98,20 +84,21 @@ export default function HomeScreen({ onSelectTeam }: HomeScreenProps) {
   }, []);
 
   const allUpcomingMatches = MATCHES.filter(
-    (m) => m.type === 'match' && m.status !== 'Finished'
+    (m) =>
+      m.type === 'match' &&
+      m.status !== 'Finished' &&
+      !liveMatches.some((liveMatch) => liveMatch.id === m.id)
   ) as Match[];
 
-  const upcomingNotLiveMatches = allUpcomingMatches.filter(
-    (match) => !liveMatches.some((liveMatch) => liveMatch.id === match.id)
-  );
+  const topHeroMatches =
+    liveMatches.length > 0
+      ? liveMatches.slice(0, 2)
+      : allUpcomingMatches.slice(0, 2);
 
-  const topHeroMatches = liveMatches.length > 0
-    ? liveMatches.slice(0, 2)
-    : upcomingNotLiveMatches.slice(0, 2);
-
-  const topRowMatches = liveMatches.length > 0
-    ? upcomingNotLiveMatches.slice(0, 4)
-    : upcomingNotLiveMatches.slice(2, 6);
+  const topRowMatches =
+    liveMatches.length > 0
+      ? allUpcomingMatches.slice(0, 4)
+      : allUpcomingMatches.slice(2, 6);
 
   return (
     <div className="pb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
@@ -173,7 +160,7 @@ export default function HomeScreen({ onSelectTeam }: HomeScreenProps) {
         <h2 className={`text-[11px] font-bold uppercase tracking-[0.2em] mb-4 px-2 ${
           liveMatches.length > 0 ? 'text-red-300 animate-pulse' : 'text-white/30'
         }`}>
-          {liveMatches.length > 0 ? 'Live Matches' : APP_COPY.heroLabel}
+          {liveMatches.length > 0 ? 'Live Matches' : 'Next Match'}
         </h2>
 
         <div className="flex overflow-x-auto no-scrollbar gap-4 pb-4">
@@ -216,12 +203,8 @@ export default function HomeScreen({ onSelectTeam }: HomeScreenProps) {
           {topRowMatches.map(match => (
             <div key={match.id} className="min-w-[300px]">
               <MatchCard
-                match={{
-                  ...match,
-                  status: liveMatches.some((liveMatch) => liveMatch.id === match.id) ? 'Live' : match.status,
-                }}
+                match={match}
                 variant="featured"
-                highlightLive={liveMatches.some((liveMatch) => liveMatch.id === match.id)}
               />
             </div>
           ))}
