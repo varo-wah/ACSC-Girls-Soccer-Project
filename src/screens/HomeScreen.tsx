@@ -15,18 +15,21 @@ function getJakartaNow() {
   return new Date(jakartaString);
 }
 
-function getMatchStartInJakarta(match: Match) {
-  const [datePart, timePart] = match.date.split('T');
-  const cleanTime = (timePart || '00:00:00').replace('Z', '');
-  return new Date(`${datePart}T${cleanTime}`);
+function getMatchStartLocal(match: Match) {
+  const [datePart, timePartRaw] = match.date.split('T');
+  const timePart = (timePartRaw || '00:00:00').replace('Z', '');
+  return new Date(`${datePart}T${timePart}`);
 }
 
 function getAutoLiveMatches(matches: Match[]) {
   const now = getJakartaNow();
 
   return matches.filter((match) => {
-    const start = getMatchStartInJakarta(match);
+    if (match.status === 'Finished') return false;
+
+    const start = getMatchStartLocal(match);
     const end = new Date(start.getTime() + 2 * 60 * 60 * 1000);
+
     return now >= start && now < end;
   });
 }
@@ -80,17 +83,21 @@ export default function HomeScreen({ onSelectTeam }: HomeScreenProps) {
     return () => clearInterval(interval);
   }, []);
 
-  const upcomingNotLiveMatches = HOME_UPCOMING_MATCHES.filter(
+  const allUpcomingMatches = MATCHES.filter(
+    (m) => m.type === 'match' && m.status !== 'Finished'
+  ) as Match[];
+
+  const upcomingNotLiveMatches = allUpcomingMatches.filter(
     (match) => !liveMatches.some((liveMatch) => liveMatch.id === match.id)
   );
 
   const topHeroMatches = liveMatches.length > 0
     ? liveMatches.slice(0, 2)
-    : HOME_UPCOMING_MATCHES.slice(0, 2);
+    : upcomingNotLiveMatches.slice(0, 2);
 
   const topRowMatches = liveMatches.length > 0
     ? upcomingNotLiveMatches.slice(0, 4)
-    : HOME_UPCOMING_MATCHES.slice(2, 6);
+    : upcomingNotLiveMatches.slice(2, 6);
 
   return (
     <div className="pb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
