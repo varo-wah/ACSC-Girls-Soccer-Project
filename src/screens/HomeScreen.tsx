@@ -38,6 +38,7 @@ export default function HomeScreen({ onSelectTeam }: HomeScreenProps) {
   const [jakartaTime, setJakartaTime] = useState('');
   const [showRefreshPopup, setShowRefreshPopup] = useState(true);
   const [liveMatches, setLiveMatches] = useState<Match[]>([]);
+  const forceLiveMatchIds = ['m4'];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -74,7 +75,20 @@ export default function HomeScreen({ onSelectTeam }: HomeScreenProps) {
     const updateLiveMatches = () => {
       const matchOnly = MATCHES.filter((m) => m.type === 'match') as Match[];
       const autoLive = getAutoLiveMatches(matchOnly);
-      setLiveMatches(autoLive);
+
+      const forcedLive = matchOnly.filter((match) =>
+        forceLiveMatchIds.includes(match.id) && match.status !== 'Finished'
+      );
+
+      const mergedLive = [...autoLive];
+
+      forcedLive.forEach((forcedMatch) => {
+        if (!mergedLive.some((m) => m.id === forcedMatch.id)) {
+          mergedLive.push(forcedMatch);
+        }
+      });
+
+      setLiveMatches(mergedLive);
     };
 
     updateLiveMatches();
