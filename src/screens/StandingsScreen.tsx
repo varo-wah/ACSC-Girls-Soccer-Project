@@ -370,6 +370,18 @@ export default function StandingsScreen() {
                 <tr className="hover:bg-white/5 transition-colors">
                   <td className="px-4 py-3 font-mono text-white/40">1</td>
                   <td className="px-4 py-3 font-medium text-white flex items-center gap-2">
+                    <img src={TEAMS.mac.logo} className="w-5 h-5 object-contain" />
+                    MAC
+                  </td>
+                  <td className="px-4 py-3 text-white/80 text-center">1</td>
+                  <td className="px-4 py-3 text-white/80 text-center">0</td>
+                  <td className="px-4 py-3 text-white/80 text-center">0</td>
+                  <td className="px-4 py-3 text-white/80 text-center">3</td>
+                </tr>
+
+                <tr className="hover:bg-white/5 transition-colors">
+                  <td className="px-4 py-3 font-mono text-white/40">2</td>
+                  <td className="px-4 py-3 font-medium text-white flex items-center gap-2">
                     <img src={TEAMS.gis.logo} className="w-5 h-5 object-contain" />
                     GRACE
                   </td>
@@ -380,7 +392,19 @@ export default function StandingsScreen() {
                 </tr>
 
                 <tr className="hover:bg-white/5 transition-colors">
-                  <td className="px-4 py-3 font-mono text-white/40">2</td>
+                  <td className="px-4 py-3 font-mono text-white/40">3</td>
+                  <td className="px-4 py-3 font-medium text-white flex items-center gap-2">
+                    <img src={TEAMS.yiss.logo} className="w-5 h-5 object-contain" />
+                    YISS
+                  </td>
+                  <td className="px-4 py-3 text-white/80 text-center">0</td>
+                  <td className="px-4 py-3 text-white/80 text-center">1</td>
+                  <td className="px-4 py-3 text-white/80 text-center">0</td>
+                  <td className="px-4 py-3 text-white/80 text-center">0</td>
+                </tr>
+
+                <tr className="hover:bg-white/5 transition-colors">
+                  <td className="px-4 py-3 font-mono text-white/40">4</td>
                   <td className="px-4 py-3 font-medium text-white flex items-center gap-2">
                     {TEAMS.fa.id === 'fa' ? (
                       <div className="w-5 h-5 rounded-full bg-white p-[2px] flex items-center justify-center">
@@ -393,30 +417,6 @@ export default function StandingsScreen() {
                   </td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
                   <td className="px-4 py-3 text-white/80 text-center">1</td>
-                  <td className="px-4 py-3 text-white/80 text-center">0</td>
-                  <td className="px-4 py-3 text-white/80 text-center">0</td>
-                </tr>
-
-                <tr className="hover:bg-white/5 transition-colors">
-                  <td className="px-4 py-3 font-mono text-white/40">3</td>
-                  <td className="px-4 py-3 font-medium text-white flex items-center gap-2">
-                    <img src={TEAMS.yiss.logo} className="w-5 h-5 object-contain" />
-                    YISS
-                  </td>
-                  <td className="px-4 py-3 text-white/80 text-center">0</td>
-                  <td className="px-4 py-3 text-white/80 text-center">0</td>
-                  <td className="px-4 py-3 text-white/80 text-center">0</td>
-                  <td className="px-4 py-3 text-white/80 text-center">0</td>
-                </tr>
-
-                <tr className="hover:bg-white/5 transition-colors">
-                  <td className="px-4 py-3 font-mono text-white/40">4</td>
-                  <td className="px-4 py-3 font-medium text-white flex items-center gap-2">
-                    <img src={TEAMS.mac.logo} className="w-5 h-5 object-contain" />
-                    MAC
-                  </td>
-                  <td className="px-4 py-3 text-white/80 text-center">0</td>
-                  <td className="px-4 py-3 text-white/80 text-center">0</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
                 </tr>
