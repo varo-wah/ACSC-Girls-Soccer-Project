@@ -14,7 +14,7 @@ function statusClasses(status: Match['status']) {
     case 'Live':
       return 'bg-red-500/20 text-red-200 border-red-400/40 shadow-[0_0_16px_rgba(239,68,68,0.35)] animate-pulse';
     case 'Finished':
-      return 'bg-emerald-500/14 text-emerald-300 border-emerald-400/20';
+      return 'bg-pink-500/20 text-pink-200 border-pink-400/40 shadow-[0_0_12px_rgba(244,114,182,0.25)]';
     default:
       return 'bg-white/8 text-slate-300 border-white/10';
   }

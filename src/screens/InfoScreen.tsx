@@ -219,7 +219,7 @@ export default function InfoScreen() {
               <div className="text-lg font-bold text-pink-300">Acsc2026</div>
             </div>
           </div>
-          <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)] self-start mt-1"></div>
+          <div className="w-2 h-2 rounded-full bg-pink-500 shadow-[0_0_10px_rgba(244,114,182,0.5)] self-start mt-1"></div>
         </section>
 
         <h2 className="text-3xl font-black text-white uppercase tracking-tight leading-none mt-12 mb-6">
