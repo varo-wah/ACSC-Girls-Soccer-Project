@@ -8,7 +8,7 @@ interface HeaderProps {
 }
 
 export default function Header({ title, activeStage, onStageChange }: HeaderProps) {
-  const stages: MatchStage[] = ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5'];
+  const stages: MatchStage[] = ['APR-7', 'APR-8', 'APR-9', 'APR-10', 'APR-11'];
 
   return (
     <header className="sticky top-0 z-40 bg-[#2a1f24]/80 backdrop-blur-xl border-b border-white/6 pt-12 pb-3">

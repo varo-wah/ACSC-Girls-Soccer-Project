@@ -13,7 +13,20 @@ import InfoScreen from './screens/InfoScreen';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<AppTab>('Home');
-  const [activeStage, setActiveStage] = useState<MatchStage>('Day 1');
+  const getDefaultStage = (): MatchStage => {
+    const now = new Date();
+    const jakartaNow = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }));
+    const month = jakartaNow.getMonth() + 1;
+    const day = jakartaNow.getDate();
+
+    if (month < 4 || (month === 4 && day <= 7)) return 'APR-7';
+    if (month === 4 && day === 8) return 'APR-8';
+    if (month === 4 && day === 9) return 'APR-9';
+    if (month === 4 && day === 10) return 'APR-10';
+    return 'APR-11';
+  };
+
+  const [activeStage, setActiveStage] = useState<MatchStage>(getDefaultStage());
   const [selectedTeam, setSelectedTeam] = useState<Team | null>(null);
 
   const matches = useMemo(() => {
@@ -34,6 +47,7 @@ export default function App() {
   const handleTabChange = (tab: AppTab) => {
     setActiveTab(tab);
     setSelectedTeam(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleSelectTeam = (team: Team) => {

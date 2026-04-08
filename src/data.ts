@@ -209,7 +209,7 @@ export const TEAMS: Record<string, Team> = {
 };
 
 export const MATCHES: ScheduleItem[] = [
-  // TUESDAY APRIL 7 (Day 1)
+  // TUESDAY APRIL 7 (APR-7)
   {
     id: 'e1',
     type: 'event',
@@ -218,7 +218,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Tue 7 Apr',
     time: '18:00',
     groupDate: 'Evening Events',
-    stage: 'Day 1',
+    stage: 'APR-7',
     venue: 'Gym 1',
   },
   {
@@ -229,11 +229,11 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Tue 7 Apr',
     time: '19:30',
     groupDate: 'Evening Events',
-    stage: 'Day 1',
+    stage: 'APR-7',
     venue: 'J100',
   },
 
-  // WEDNESDAY APRIL 8 (Day 2)
+  // WEDNESDAY APRIL 8 (APR-8)
   {
     id: 'm1',
     type: 'match',
@@ -243,7 +243,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Wed 8 Apr',
     time: '08:00',
     groupDate: 'Morning Matches',
-    stage: 'Day 2',
+    stage: 'APR-8',
     status: 'Finished',
     venue: 'Main Field',
     competitionLabel: 'Group Stage',
@@ -259,7 +259,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Wed 8 Apr',
     time: '08:00',
     groupDate: 'Morning Matches',
-    stage: 'Day 2',
+    stage: 'APR-8',
     status: 'Finished',
     venue: 'Side Field',
     competitionLabel: 'Group Stage',
@@ -275,7 +275,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Wed 8 Apr',
     time: '09:30',
     groupDate: 'Morning Matches',
-    stage: 'Day 2',
+    stage: 'APR-8',
     status: 'Finished',
     venue: 'Main Field',
     competitionLabel: 'Group Stage',
@@ -291,7 +291,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Wed 8 Apr',
     time: '09:30',
     groupDate: 'Morning Matches',
-    stage: 'Day 2',
+    stage: 'APR-8',
     status: 'Finished',
     venue: 'Side Field',
     competitionLabel: 'Group Stage',
@@ -306,7 +306,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Wed 8 Apr',
     time: '11:45',
     groupDate: 'Midday Events',
-    stage: 'Day 2',
+    stage: 'APR-8',
     venue: 'Gym 1',
   },
   {
@@ -317,7 +317,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Wed 8 Apr',
     time: '12:30',
     groupDate: 'Midday Events',
-    stage: 'Day 2',
+    stage: 'APR-8',
     venue: 'K400',
   },
   {
@@ -328,11 +328,11 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Wed 8 Apr',
     time: '14:00',
     groupDate: 'Afternoon Events',
-    stage: 'Day 2',
+    stage: 'APR-8',
     venue: 'SPH Campus',
   },
 
-  // THURSDAY APRIL 9 (Day 3)
+  // THURSDAY APRIL 9 (APR-9)
   {
     id: 'm5',
     type: 'match',
@@ -342,7 +342,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Thu 9 Apr',
     time: '08:00',
     groupDate: 'Morning Matches',
-    stage: 'Day 3',
+    stage: 'APR-9',
     status: 'Upcoming',
     venue: 'Main Field',
     competitionLabel: 'Group Stage',
@@ -356,7 +356,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Thu 9 Apr',
     time: '08:00',
     groupDate: 'Morning Matches',
-    stage: 'Day 3',
+    stage: 'APR-9',
     status: 'Upcoming',
     venue: 'Side Field',
     competitionLabel: 'Group Stage',
@@ -370,7 +370,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Thu 9 Apr',
     time: '09:30',
     groupDate: 'Morning Matches',
-    stage: 'Day 3',
+    stage: 'APR-9',
     status: 'Upcoming',
     venue: 'Main Field',
     competitionLabel: 'Group Stage',
@@ -384,7 +384,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Thu 9 Apr',
     time: '09:30',
     groupDate: 'Morning Matches',
-    stage: 'Day 3',
+    stage: 'APR-9',
     status: 'Upcoming',
     venue: 'Side Field',
     competitionLabel: 'Group Stage',
@@ -397,7 +397,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Thu 9 Apr',
     time: '10:00',
     groupDate: 'Cultural Experiences',
-    stage: 'Day 3',
+    stage: 'APR-9',
     venue: 'Batik Studio',
   },
   {
@@ -408,7 +408,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Thu 9 Apr',
     time: '10:30',
     groupDate: 'Cultural Experiences',
-    stage: 'Day 3',
+    stage: 'APR-9',
     venue: 'Batik Studio',
   },
   {
@@ -419,7 +419,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Thu 9 Apr',
     time: '11:00',
     groupDate: 'Cultural Experiences',
-    stage: 'Day 3',
+    stage: 'APR-9',
     venue: 'Batik Studio',
   },
   {
@@ -430,7 +430,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Thu 9 Apr',
     time: '11:30',
     groupDate: 'Cultural Experiences',
-    stage: 'Day 3',
+    stage: 'APR-9',
     venue: 'Batik Studio',
   },
   {
@@ -441,7 +441,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Thu 9 Apr',
     time: '11:30',
     groupDate: 'Midday Events',
-    stage: 'Day 3',
+    stage: 'APR-9',
     venue: 'K400',
   },
   {
@@ -453,7 +453,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Thu 9 Apr',
     time: '14:30',
     groupDate: 'Afternoon Matches',
-    stage: 'Day 3',
+    stage: 'APR-9',
     status: 'Upcoming',
     venue: 'Main Field',
     competitionLabel: 'Group Stage',
@@ -467,7 +467,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Thu 9 Apr',
     time: '14:30',
     groupDate: 'Afternoon Matches',
-    stage: 'Day 3',
+    stage: 'APR-9',
     status: 'Upcoming',
     venue: 'Side Field',
     competitionLabel: 'Group Stage',
@@ -481,7 +481,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Thu 9 Apr',
     time: '16:00',
     groupDate: 'Afternoon Matches',
-    stage: 'Day 3',
+    stage: 'APR-9',
     status: 'Upcoming',
     venue: 'Main Field',
     competitionLabel: 'Group Stage',
@@ -495,13 +495,13 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Thu 9 Apr',
     time: '16:00',
     groupDate: 'Afternoon Matches',
-    stage: 'Day 3',
+    stage: 'APR-9',
     status: 'Upcoming',
     venue: 'Side Field',
     competitionLabel: 'Group Stage',
   },
 
-  // FRIDAY APRIL 10 (Day 4)
+  // FRIDAY APRIL 10 (APR-10)
   {
     id: 'm13',
     type: 'match',
@@ -511,7 +511,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Fri 10 Apr',
     time: '08:00',
     groupDate: 'Morning Matches',
-    stage: 'Day 4',
+    stage: 'APR-10',
     status: 'Upcoming',
     venue: 'Main Field',
     competitionLabel: 'Game 1 (A1 v B4)',
@@ -525,7 +525,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Fri 10 Apr',
     time: '08:00',
     groupDate: 'Morning Matches',
-    stage: 'Day 4',
+    stage: 'APR-10',
     status: 'Upcoming',
     venue: 'Side Field',
     competitionLabel: 'Game 2 (B2 v A3)',
@@ -539,7 +539,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Fri 10 Apr',
     time: '09:30',
     groupDate: 'Morning Matches',
-    stage: 'Day 4',
+    stage: 'APR-10',
     status: 'Upcoming',
     venue: 'Main Field',
     competitionLabel: 'Game 3 (B1 v A4)',
@@ -553,7 +553,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Fri 10 Apr',
     time: '09:30',
     groupDate: 'Morning Matches',
-    stage: 'Day 4',
+    stage: 'APR-10',
     status: 'Upcoming',
     venue: 'Side Field',
     competitionLabel: 'Game 4 (A2 v B3)',
@@ -566,7 +566,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Fri 10 Apr',
     time: '10:00',
     groupDate: 'Cultural Experiences',
-    stage: 'Day 4',
+    stage: 'APR-10',
     venue: 'Batik Studio',
   },
   {
@@ -577,7 +577,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Fri 10 Apr',
     time: '10:30',
     groupDate: 'Cultural Experiences',
-    stage: 'Day 4',
+    stage: 'APR-10',
     venue: 'Batik Studio',
   },
   {
@@ -588,7 +588,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Fri 10 Apr',
     time: '11:00',
     groupDate: 'Cultural Experiences',
-    stage: 'Day 4',
+    stage: 'APR-10',
     venue: 'Batik Studio',
   },
   {
@@ -599,7 +599,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Fri 10 Apr',
     time: '11:30',
     groupDate: 'Cultural Experiences',
-    stage: 'Day 4',
+    stage: 'APR-10',
     venue: 'Batik Studio',
   },
   {
@@ -610,7 +610,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Fri 10 Apr',
     time: '11:30',
     groupDate: 'Midday Events',
-    stage: 'Day 4',
+    stage: 'APR-10',
     venue: 'K400',
   },
   {
@@ -622,7 +622,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Fri 10 Apr',
     time: '14:30',
     groupDate: 'Afternoon Matches',
-    stage: 'Day 4',
+    stage: 'APR-10',
     status: 'Upcoming',
     venue: 'Main Field',
     competitionLabel: 'Game 5 (WG1 v WG2)',
@@ -636,7 +636,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Fri 10 Apr',
     time: '14:30',
     groupDate: 'Afternoon Matches',
-    stage: 'Day 4',
+    stage: 'APR-10',
     status: 'Upcoming',
     venue: 'Side Field',
     competitionLabel: 'Game 6 (LG1 v LG2)',
@@ -650,7 +650,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Fri 10 Apr',
     time: '16:00',
     groupDate: 'Afternoon Matches',
-    stage: 'Day 4',
+    stage: 'APR-10',
     status: 'Upcoming',
     venue: 'Main Field',
     competitionLabel: 'Game 7 (WG3 v WG4)',
@@ -664,13 +664,13 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Fri 10 Apr',
     time: '16:00',
     groupDate: 'Afternoon Matches',
-    stage: 'Day 4',
+    stage: 'APR-10',
     status: 'Upcoming',
     venue: 'Side Field',
     competitionLabel: 'Game 8 (LG3 v LG4)',
   },
 
-  // SATURDAY APRIL 11 (Day 5)
+  // SATURDAY APRIL 11 (APR-11)
   {
     id: 'm21',
     type: 'match',
@@ -680,7 +680,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Sat 11 Apr',
     time: '08:00',
     groupDate: 'Morning Matches',
-    stage: 'Day 5',
+    stage: 'APR-11',
     status: 'Upcoming',
     venue: 'Main Field',
     competitionLabel: '7th Place Game (LG6 v LG8)',
@@ -694,7 +694,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Sat 11 Apr',
     time: '09:30',
     groupDate: 'Morning Matches',
-    stage: 'Day 5',
+    stage: 'APR-11',
     status: 'Upcoming',
     venue: 'Main Field',
     competitionLabel: '5th Place Game (WG6 v WG8)',
@@ -708,7 +708,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Sat 11 Apr',
     time: '11:00',
     groupDate: 'Morning Matches',
-    stage: 'Day 5',
+    stage: 'APR-11',
     status: 'Upcoming',
     venue: 'Main Field',
     competitionLabel: '3rd Place Game (LG5 v LG7)',
@@ -721,7 +721,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Sat 11 Apr',
     time: '11:30',
     groupDate: 'Midday Events',
-    stage: 'Day 5',
+    stage: 'APR-11',
     venue: 'K400',
   },
   {
@@ -733,7 +733,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Sat 11 Apr',
     time: '14:00',
     groupDate: 'Afternoon Matches',
-    stage: 'Day 5',
+    stage: 'APR-11',
     status: 'Upcoming',
     venue: 'Main Field',
     competitionLabel: 'Championship Game (WG5 v WG7)',
@@ -746,7 +746,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Sat 11 Apr',
     time: '16:30',
     groupDate: 'Evening Events',
-    stage: 'Day 5',
+    stage: 'APR-11',
     venue: 'J100',
   },
   {
@@ -757,7 +757,7 @@ export const MATCHES: ScheduleItem[] = [
     displayDate: 'Sat 11 Apr',
     time: '17:30',
     groupDate: 'Evening Events',
-    stage: 'Day 5',
+    stage: 'APR-11',
     venue: 'Gym 1',
   }
 ];

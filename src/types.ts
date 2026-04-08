@@ -18,7 +18,7 @@ export interface Team {
   rosterImage?: string;
 }
 
-export type MatchStage = 'Day 1' | 'Day 2' | 'Day 3' | 'Day 4' | 'Day 5';
+export type MatchStage = 'APR-7' | 'APR-8' | 'APR-9' | 'APR-10' | 'APR-11';
 export type AppTab = 'Home' | 'Schedule' | 'Standings' | 'Info';
 export type MatchStatus = 'Upcoming' | 'Live' | 'Finished';
 

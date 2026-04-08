@@ -1,6 +1,7 @@
 import { X } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Team, Player } from '../types';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 
 interface TeamDetailScreenProps {
   team: Team;
@@ -18,9 +19,29 @@ function createPlaceholderRoster(count = 10): Player[] {
 }
 
 export default function TeamDetailScreen({ team, onClose }: TeamDetailScreenProps) {
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+
   const roster = team.roster && team.roster.length > 0
     ? team.roster
     : createPlaceholderRoster(10);
+
+  useLayoutEffect(() => {
+    if (!scrollRef.current) return;
+
+    scrollRef.current.scrollTop = 0;
+
+    requestAnimationFrame(() => {
+      if (scrollRef.current) {
+        scrollRef.current.scrollTop = 0;
+      }
+    });
+
+    setTimeout(() => {
+      if (scrollRef.current) {
+        scrollRef.current.scrollTop = 0;
+      }
+    }, 50);
+  }, [team.id]);
 
   return (
     <>
@@ -80,7 +101,7 @@ export default function TeamDetailScreen({ team, onClose }: TeamDetailScreenProp
             </div>
           </div>
 
-          <div className="flex-1 overflow-auto p-5 space-y-5">
+          <div key={team.id} ref={scrollRef} className="flex-1 overflow-auto p-5 space-y-5">
             {team.rosterImage && (
               <section className="rounded-[24px] border border-white/8 overflow-hidden bg-[#241b1f]">
                 <img

@@ -120,8 +120,10 @@ export default function HomeScreen({ onSelectTeam }: HomeScreenProps) {
                 <path d="M12 16.5v5"/>
               </svg>
             </div>
-            <div className="text-[11px] uppercase tracking-[0.16em] text-pink-300/80 leading-tight max-w-[140px] sm:max-w-none break-words">
-              Asian Christian Schools Conference
+            <div className="text-[11px] uppercase tracking-[0.16em] text-pink-300/80 leading-tight max-w-[160px] sm:max-w-none break-words">
+              ACSC Girls Soccer
+              <br />
+              Hosted by SPH
             </div>
           </div>
 
@@ -134,9 +136,6 @@ export default function HomeScreen({ onSelectTeam }: HomeScreenProps) {
             </div>
           </div>
         </div>
-        <h1 className="text-3xl font-bold text-white tracking-tight mb-2">
-          ACSC Girls Soccer
-        </h1>
       </header>
 
       <div
