@@ -303,6 +303,18 @@ export default function StandingsScreen() {
                 <tr className="hover:bg-white/5 transition-colors">
                   <td className="px-4 py-3 font-mono text-white/40">1</td>
                   <td className="px-4 py-3 font-medium text-white flex items-center gap-2">
+                    <img src={TEAMS.dalat.logo} className="w-5 h-5 object-contain" />
+                    DALAT
+                  </td>
+                  <td className="px-4 py-3 text-white/80 text-center">1</td>
+                  <td className="px-4 py-3 text-white/80 text-center">0</td>
+                  <td className="px-4 py-3 text-white/80 text-center">0</td>
+                  <td className="px-4 py-3 text-white/80 text-center">3</td>
+                </tr>
+
+                <tr className="hover:bg-white/5 transition-colors">
+                  <td className="px-4 py-3 font-mono text-white/40">2</td>
+                  <td className="px-4 py-3 font-medium text-white flex items-center gap-2">
                     <img src={TEAMS.icsbk.logo} className="w-5 h-5 object-contain" />
                     ICS BKK
                   </td>
@@ -313,7 +325,7 @@ export default function StandingsScreen() {
                 </tr>
 
                 <tr className="hover:bg-white/5 transition-colors">
-                  <td className="px-4 py-3 font-mono text-white/40">2</td>
+                  <td className="px-4 py-3 font-mono text-white/40">3</td>
                   <td className="px-4 py-3 font-medium text-white flex items-center gap-2">
                     <img src={TEAMS.icshk.logo} className="w-5 h-5 object-contain" />
                     ICS HK
@@ -325,25 +337,13 @@ export default function StandingsScreen() {
                 </tr>
 
                 <tr className="hover:bg-white/5 transition-colors">
-                  <td className="px-4 py-3 font-mono text-white/40">3</td>
+                  <td className="px-4 py-3 font-mono text-white/40">4</td>
                   <td className="px-4 py-3 font-medium text-white flex items-center gap-2">
                     <img src={TEAMS.sph.logo} className="w-5 h-5 object-contain" />
                     SPH
                   </td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
-                  <td className="px-4 py-3 text-white/80 text-center">0</td>
-                  <td className="px-4 py-3 text-white/80 text-center">0</td>
-                  <td className="px-4 py-3 text-white/80 text-center">0</td>
-                </tr>
-
-                <tr className="hover:bg-white/5 transition-colors">
-                  <td className="px-4 py-3 font-mono text-white/40">4</td>
-                  <td className="px-4 py-3 font-medium text-white flex items-center gap-2">
-                    <img src={TEAMS.dalat.logo} className="w-5 h-5 object-contain" />
-                    DALAT
-                  </td>
-                  <td className="px-4 py-3 text-white/80 text-center">0</td>
-                  <td className="px-4 py-3 text-white/80 text-center">0</td>
+                  <td className="px-4 py-3 text-white/80 text-center">1</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
                 </tr>

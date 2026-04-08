@@ -276,9 +276,11 @@ export const MATCHES: ScheduleItem[] = [
     time: '09:30',
     groupDate: 'Morning Matches',
     stage: 'Day 2',
-    status: 'Upcoming',
+    status: 'Finished',
     venue: 'Main Field',
     competitionLabel: 'Group Stage',
+    homeScore: 1,
+    awayScore: 0,
   },
   {
     id: 'm4',
