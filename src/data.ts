@@ -370,28 +370,32 @@ export const MATCHES: ScheduleItem[] = [
     type: 'match',
     homeTeam: TEAMS.fa,
     awayTeam: TEAMS.mac,
-    date: '2026-04-09T09:30:00Z',
+    date: '2026-04-09T11:00:00Z',
     displayDate: 'Thu 9 Apr',
-    time: '09:30',
-    groupDate: 'Morning Matches',
+    time: '11:00',
+    groupDate: 'Late Morning Matches',
     stage: 'APR-9',
-    status: 'Upcoming',
+    status: 'Finished',
     venue: 'Main Field',
     competitionLabel: 'Group Stage',
+    homeScore: 3,
+    awayScore: 1,
   },
   {
     id: 'm8',
     type: 'match',
-    homeTeam: TEAMS.icsbk,
-    awayTeam: TEAMS.dalat,
-    date: '2026-04-09T09:30:00Z',
+    homeTeam: TEAMS.dalat,
+    awayTeam: TEAMS.icsbk,
+    date: '2026-04-09T11:00:00Z',
     displayDate: 'Thu 9 Apr',
-    time: '09:30',
-    groupDate: 'Morning Matches',
+    time: '11:00',
+    groupDate: 'Late Morning Matches',
     stage: 'APR-9',
-    status: 'Upcoming',
+    status: 'Finished',
     venue: 'Side Field',
     competitionLabel: 'Group Stage',
+    homeScore: 0,
+    awayScore: 4,
   },
   {
     id: 'e6',
@@ -837,7 +841,8 @@ export const HOME_UPCOMING_MATCHES = MATCHES.filter(
   (match) => match.type === 'match' && match.status === 'Upcoming'
 ) as Match[];
 export const HOME_FINISHED_MATCHES = MATCHES
-  .filter((match) => match.type === 'match' && match.status === 'Finished') as Match[];
+  .filter((match) => match.type === 'match' && match.status === 'Finished')
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()) as Match[];
 
 export const APP_COPY = {
   title: 'Asia Christian Schools Conference',

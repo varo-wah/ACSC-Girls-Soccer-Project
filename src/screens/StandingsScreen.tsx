@@ -269,9 +269,9 @@ function ACSCBracket() {
 }
 
 export default function StandingsScreen() {
-  const finishedMatches = MATCHES.filter(
-    (m) => m.type === 'match' && m.status === 'Finished'
-  );
+  const finishedMatches = MATCHES
+    .filter((m) => m.type === 'match' && m.status === 'Finished')
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
     <div className="pb-24 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -303,18 +303,6 @@ export default function StandingsScreen() {
                 <tr>
                   <td className="px-4 py-3 font-mono text-white/40">1</td>
                   <td className="px-4 py-3 text-white flex items-center gap-2">
-                    <img src={TEAMS.dalat.logo} className="w-5 h-5" />
-                    DALAT
-                  </td>
-                  <td className="px-4 py-3 text-center">1</td>
-                  <td className="px-4 py-3 text-center">0</td>
-                  <td className="px-4 py-3 text-center">0</td>
-                  <td className="px-4 py-3 text-center">3</td>
-                </tr>
-
-                <tr>
-                  <td className="px-4 py-3 font-mono text-white/40">2</td>
-                  <td className="px-4 py-3 text-white flex items-center gap-2">
                     <img src={TEAMS.icshk.logo} className="w-5 h-5" />
                     ICS HK
                   </td>
@@ -325,15 +313,27 @@ export default function StandingsScreen() {
                 </tr>
 
                 <tr>
-                  <td className="px-4 py-3 font-mono text-white/40">3</td>
+                  <td className="px-4 py-3 font-mono text-white/40">2</td>
                   <td className="px-4 py-3 text-white flex items-center gap-2">
                     <img src={TEAMS.icsbk.logo} className="w-5 h-5" />
                     ICS BKK
                   </td>
-                  <td className="px-4 py-3 text-center">0</td>
+                  <td className="px-4 py-3 text-center">1</td>
                   <td className="px-4 py-3 text-center">0</td>
                   <td className="px-4 py-3 text-center">1</td>
+                  <td className="px-4 py-3 text-center">4</td>
+                </tr>
+
+                <tr>
+                  <td className="px-4 py-3 font-mono text-white/40">3</td>
+                  <td className="px-4 py-3 text-white flex items-center gap-2">
+                    <img src={TEAMS.dalat.logo} className="w-5 h-5" />
+                    DALAT
+                  </td>
                   <td className="px-4 py-3 text-center">1</td>
+                  <td className="px-4 py-3 text-center">1</td>
+                  <td className="px-4 py-3 text-center">0</td>
+                  <td className="px-4 py-3 text-center">3</td>
                 </tr>
 
                 <tr>
@@ -382,11 +382,17 @@ export default function StandingsScreen() {
                 <tr>
                   <td className="px-4 py-3 font-mono text-white/40">2</td>
                   <td className="px-4 py-3 text-white flex items-center gap-2">
-                    <img src={TEAMS.mac.logo} className="w-5 h-5" />
-                    MAC
+                    {TEAMS.fa.id === 'fa' ? (
+                      <div className="w-5 h-5 rounded-full bg-white p-[2px] flex items-center justify-center">
+                        <img src={TEAMS.fa.logo} className="w-full h-full object-contain" />
+                      </div>
+                    ) : (
+                      <img src={TEAMS.fa.logo} className="w-5 h-5" />
+                    )}
+                    FAITH
                   </td>
                   <td className="px-4 py-3 text-center">1</td>
-                  <td className="px-4 py-3 text-center">0</td>
+                  <td className="px-4 py-3 text-center">1</td>
                   <td className="px-4 py-3 text-center">0</td>
                   <td className="px-4 py-3 text-center">3</td>
                 </tr>
@@ -394,13 +400,13 @@ export default function StandingsScreen() {
                 <tr>
                   <td className="px-4 py-3 font-mono text-white/40">3</td>
                   <td className="px-4 py-3 text-white flex items-center gap-2">
-                    <img src={TEAMS.fa.logo} className="w-5 h-5" />
-                    FAITH
+                    <img src={TEAMS.mac.logo} className="w-5 h-5" />
+                    MAC
                   </td>
-                  <td className="px-4 py-3 text-center">0</td>
+                  <td className="px-4 py-3 text-center">1</td>
                   <td className="px-4 py-3 text-center">1</td>
                   <td className="px-4 py-3 text-center">0</td>
-                  <td className="px-4 py-3 text-center">0</td>
+                  <td className="px-4 py-3 text-center">3</td>
                 </tr>
 
                 <tr>
