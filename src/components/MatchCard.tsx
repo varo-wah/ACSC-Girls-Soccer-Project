@@ -145,11 +145,11 @@ export default function MatchCard({ match, variant = 'default', highlightLive = 
                 <div className="flex flex-col items-center gap-1">
                   <div className="flex items-center gap-3">
                     <span className={`${isFeatured ? 'text-3xl' : 'text-2xl'} font-bold text-white tracking-tighter`}>
-                      {match.homeScore}
+                      {match.homeScore ?? '-'}
                     </span>
                     <span className="text-white/20 font-bold">-</span>
                     <span className={`${isFeatured ? 'text-3xl' : 'text-2xl'} font-bold text-white tracking-tighter`}>
-                      {match.awayScore}
+                      {match.awayScore ?? '-'}
                     </span>
                   </div>
                 </div>
