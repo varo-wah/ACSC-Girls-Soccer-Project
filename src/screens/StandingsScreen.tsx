@@ -1,13 +1,16 @@
 import { Trophy, Star, Shield, Hand } from 'lucide-react';
-import { MATCHES, TEAMS } from '../data';
+import { MATCHES, TEAMS, BRACKET_DATA } from '../data';
 import MatchCard from '../components/MatchCard';
+import { Team } from '../types';
 
 type BracketCardData = {
   id: string;
   label: string;
   dateLabel: string;
-  home: string;
-  away: string;
+  home?: string;
+  away?: string;
+  homeTeam?: Team;
+  awayTeam?: Team;
   tone: 'pink' | 'gold' | 'blue';
 };
 
@@ -21,11 +24,11 @@ const LINE_GOLD = 'rgba(251,191,36,0.45)';
 const LINE_BLUE = 'rgba(125,211,252,0.5)';
 const LINE_MUTED = 'rgba(255,255,255,0.18)';
 
-const quarterfinals: BracketCardData[] = [
-  { id: 'q1', label: 'Game 1', dateLabel: '10 Apr, 08:00', home: 'A1', away: 'B4', tone: 'pink' },
-  { id: 'q2', label: 'Game 2', dateLabel: '10 Apr, 08:00', home: 'B2', away: 'A3', tone: 'pink' },
-  { id: 'q3', label: 'Game 3', dateLabel: '10 Apr, 09:30', home: 'B1', away: 'A4', tone: 'pink' },
-  { id: 'q4', label: 'Game 4', dateLabel: '10 Apr, 09:30', home: 'A2', away: 'B3', tone: 'pink' },
+const placementMatches: BracketCardData[] = [
+  { id: 'f', label: 'Championship Match', dateLabel: '11 Apr, 14:00', home: 'WG5', away: 'WG7', tone: 'gold' },
+  { id: 'p3', label: '3rd Place Game', dateLabel: '11 Apr, 11:00', home: 'LG5', away: 'LG7', tone: 'blue' },
+  { id: 'p5', label: '5th Place Game', dateLabel: '11 Apr, 09:30', home: 'WG6', away: 'WG8', tone: 'gold' },
+  { id: 'p7', label: '7th Place Game', dateLabel: '11 Apr, 08:00', home: 'LG6', away: 'LG8', tone: 'blue' },
 ];
 
 const semifinals: BracketCardData[] = [
@@ -38,12 +41,17 @@ const loserCrossovers: BracketCardData[] = [
   { id: 'l2', label: 'Loser Crossover', dateLabel: '10 Apr, 16:00', home: 'LG3', away: 'LG4', tone: 'gold' },
 ];
 
-const placementMatches: BracketCardData[] = [
-  { id: 'f', label: 'Championship Match', dateLabel: '11 Apr, 14:00', home: 'WG5', away: 'WG7', tone: 'gold' },
-  { id: 'p3', label: '3rd Place Game', dateLabel: '11 Apr, 11:00', home: 'LG5', away: 'LG7', tone: 'blue' },
-  { id: 'p5', label: '5th Place Game', dateLabel: '11 Apr, 09:30', home: 'WG6', away: 'WG8', tone: 'gold' },
-  { id: 'p7', label: '7th Place Game', dateLabel: '11 Apr, 08:00', home: 'LG6', away: 'LG8', tone: 'blue' },
-];
+const quarterfinals: BracketCardData[] =
+  BRACKET_DATA.find((round) => round.id === 'qf')?.matches.map((match, index) => ({
+    id: match.id,
+    label: `Game ${index + 1}`,
+    dateLabel: match.dateLabel || '',
+    home: match.homeTeam?.shortName || match.homeTeamPlaceholder || '',
+    away: match.awayTeam?.shortName || match.awayTeamPlaceholder || '',
+    homeTeam: match.homeTeam,
+    awayTeam: match.awayTeam,
+    tone: 'pink' as const,
+  })) || [];
 
 function toneClasses(tone: BracketCardData['tone']) {
   switch (tone) {
@@ -71,11 +79,22 @@ function BracketBox({ card }: { card: BracketCardData }) {
       </div>
 
       <div className="px-4 py-3 flex items-center justify-between bg-white/[0.03]">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-[10px] text-white/60 font-bold">
-            {card.home}
+        <div className="flex items-center gap-3 min-w-0">
+          <div className="w-8 h-8 rounded-full bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
+            {card.homeTeam ? (
+              <div className={`w-full h-full rounded-full flex items-center justify-center ${card.homeTeam.id === 'fa' ? 'bg-white p-1' : ''}`}>
+                <img
+                  src={card.homeTeam.logo}
+                  alt={card.homeTeam.name}
+                  className="w-full h-full object-contain"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            ) : (
+              <span className="text-[10px] text-white/60 font-bold">{card.home}</span>
+            )}
           </div>
-          <span className="text-base font-bold text-white uppercase tracking-wide">
+          <span className="text-base font-bold text-white uppercase tracking-wide truncate">
             {card.home}
           </span>
         </div>
@@ -83,11 +102,22 @@ function BracketBox({ card }: { card: BracketCardData }) {
       </div>
 
       <div className="px-4 py-3 border-t border-white/8 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-[10px] text-white/60 font-bold">
-            {card.away}
+        <div className="flex items-center gap-3 min-w-0">
+          <div className="w-8 h-8 rounded-full bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
+            {card.awayTeam ? (
+              <div className={`w-full h-full rounded-full flex items-center justify-center ${card.awayTeam.id === 'fa' ? 'bg-white p-1' : ''}`}>
+                <img
+                  src={card.awayTeam.logo}
+                  alt={card.awayTeam.name}
+                  className="w-full h-full object-contain"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            ) : (
+              <span className="text-[10px] text-white/60 font-bold">{card.away}</span>
+            )}
           </div>
-          <span className="text-base font-bold text-white uppercase tracking-wide">
+          <span className="text-base font-bold text-white uppercase tracking-wide truncate">
             {card.away}
           </span>
         </div>
@@ -303,8 +333,8 @@ export default function StandingsScreen() {
                 <tr className="hover:bg-white/5 transition-colors">
                   <td className="px-4 py-3 font-mono text-white/40">1</td>
                   <td className="px-4 py-3 font-medium text-white flex items-center gap-2">
-                    <img src={TEAMS.icsbk.logo} className="w-5 h-5 object-contain" />
-                    ICS BKK
+                    <img src={TEAMS.icshk.logo} className="w-5 h-5 object-contain" />
+                    ICS HK
                   </td>
                   <td className="px-4 py-3 text-white/80 text-center">2</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
@@ -315,8 +345,8 @@ export default function StandingsScreen() {
                 <tr className="hover:bg-white/5 transition-colors">
                   <td className="px-4 py-3 font-mono text-white/40">2</td>
                   <td className="px-4 py-3 font-medium text-white flex items-center gap-2">
-                    <img src={TEAMS.icshk.logo} className="w-5 h-5 object-contain" />
-                    ICS HK
+                    <img src={TEAMS.icsbk.logo} className="w-5 h-5 object-contain" />
+                    ICS BKK
                   </td>
                   <td className="px-4 py-3 text-white/80 text-center">1</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
@@ -343,7 +373,7 @@ export default function StandingsScreen() {
                     SPH
                   </td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
-                  <td className="px-4 py-3 text-white/80 text-center">3</td>
+                  <td className="px-4 py-3 text-white/80 text-center">2</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
                 </tr>
