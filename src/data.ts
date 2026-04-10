@@ -521,16 +521,18 @@ export const MATCHES: ScheduleItem[] = [
   {
     id: 'm13',
     type: 'match',
-    homeTeam: TEAMS.icshk,
+    homeTeam: TEAMS.icsbk,
     awayTeam: TEAMS.yiss,
     date: '2026-04-10T08:00:00Z',
     displayDate: 'Fri 10 Apr',
     time: '08:00',
     groupDate: 'Morning Matches',
     stage: 'APR-10',
-    status: 'Upcoming',
+    status: 'Finished',
     venue: 'Main Field',
-    competitionLabel: 'Game 1 (A1 v B4)',
+    competitionLabel: 'Game 1 (A2 v B4)',
+    homeScore: 3,
+    awayScore: 0,
   },
   {
     id: 'm14',
@@ -542,9 +544,11 @@ export const MATCHES: ScheduleItem[] = [
     time: '08:00',
     groupDate: 'Morning Matches',
     stage: 'APR-10',
-    status: 'Upcoming',
+    status: 'Finished',
     venue: 'Side Field',
     competitionLabel: 'Game 2 (B2 v A3)',
+    homeScore: 3,
+    awayScore: 1,
   },
   {
     id: 'm15',
@@ -563,7 +567,7 @@ export const MATCHES: ScheduleItem[] = [
   {
     id: 'm16',
     type: 'match',
-    homeTeam: TEAMS.icsbk,
+    homeTeam: TEAMS.icshk,
     awayTeam: TEAMS.mac,
     date: '2026-04-10T09:30:00Z',
     displayDate: 'Fri 10 Apr',
@@ -572,7 +576,7 @@ export const MATCHES: ScheduleItem[] = [
     stage: 'APR-10',
     status: 'Upcoming',
     venue: 'Side Field',
-    competitionLabel: 'Game 4 (A2 v B3)',
+    competitionLabel: 'Game 4 (A1 v B3)',
   },
   {
     id: 'e11',
@@ -632,8 +636,8 @@ export const MATCHES: ScheduleItem[] = [
   {
     id: 'm17',
     type: 'match',
-    homeTeamPlaceholder: 'WG1',
-    awayTeamPlaceholder: 'WG2',
+    homeTeam: TEAMS.icsbk,
+    awayTeam: TEAMS.fa,
     date: '2026-04-10T14:30:00Z',
     displayDate: 'Fri 10 Apr',
     time: '14:30',
@@ -646,8 +650,8 @@ export const MATCHES: ScheduleItem[] = [
   {
     id: 'm18',
     type: 'match',
-    homeTeamPlaceholder: 'LG1',
-    awayTeamPlaceholder: 'LG2',
+    homeTeam: TEAMS.yiss,
+    awayTeam: TEAMS.dalat,
     date: '2026-04-10T14:30:00Z',
     displayDate: 'Fri 10 Apr',
     time: '14:30',
@@ -785,7 +789,7 @@ export const BRACKET_DATA: BracketRound[] = [
     matches: [
       {
         id: 'q1',
-        homeTeam: TEAMS.icshk,
+        homeTeam: TEAMS.icsbk,
         awayTeam: TEAMS.yiss,
         dateLabel: '10 Apr, 08:00',
       },
@@ -803,7 +807,7 @@ export const BRACKET_DATA: BracketRound[] = [
       },
       {
         id: 'q4',
-        homeTeam: TEAMS.icsbk,
+        homeTeam: TEAMS.icshk,
         awayTeam: TEAMS.mac,
         dateLabel: '10 Apr, 09:30',
       },

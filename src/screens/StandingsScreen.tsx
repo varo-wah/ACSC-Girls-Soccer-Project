@@ -32,13 +32,45 @@ const placementMatches: BracketCardData[] = [
 ];
 
 const semifinals: BracketCardData[] = [
-  { id: 's1', label: 'Semi Final #1', dateLabel: '10 Apr, 14:30', home: 'WG1', away: 'WG2', tone: 'gold' },
-  { id: 's2', label: 'Semi Final #2', dateLabel: '10 Apr, 16:00', home: 'WG3', away: 'WG4', tone: 'gold' },
+  {
+    id: 's1',
+    label: 'Semi Final #1',
+    dateLabel: '10 Apr, 14:30',
+    home: 'ICS BKK',
+    away: 'FAITH',
+    homeTeam: TEAMS.icsbk,
+    awayTeam: TEAMS.fa,
+    tone: 'gold',
+  },
+  {
+    id: 's2',
+    label: 'Semi Final #2',
+    dateLabel: '10 Apr, 16:00',
+    home: 'WG3',
+    away: 'WG4',
+    tone: 'gold',
+  },
 ];
 
 const loserCrossovers: BracketCardData[] = [
-  { id: 'l1', label: 'Loser Crossover', dateLabel: '10 Apr, 14:30', home: 'LG1', away: 'LG2', tone: 'gold' },
-  { id: 'l2', label: 'Loser Crossover', dateLabel: '10 Apr, 16:00', home: 'LG3', away: 'LG4', tone: 'gold' },
+  {
+    id: 'l1',
+    label: 'Loser Crossover',
+    dateLabel: '10 Apr, 14:30',
+    home: 'YISS',
+    away: 'DALAT',
+    homeTeam: TEAMS.yiss,
+    awayTeam: TEAMS.dalat,
+    tone: 'gold',
+  },
+  {
+    id: 'l2',
+    label: 'Loser Crossover',
+    dateLabel: '10 Apr, 16:00',
+    home: 'LG3',
+    away: 'LG4',
+    tone: 'gold',
+  },
 ];
 
 const quarterfinals: BracketCardData[] =
@@ -315,6 +347,24 @@ export default function StandingsScreen() {
       <div className="p-6 space-y-8">
         <section>
           <h2 className="text-[11px] font-bold text-white/30 uppercase tracking-[0.2em] mb-4">
+            Bracket
+          </h2>
+          <ACSCBracket />
+        </section>
+
+        <section>
+          <h2 className="text-[11px] font-bold text-white/30 uppercase tracking-[0.2em] mb-4">
+            Recent Results
+          </h2>
+          <div className="space-y-3">
+            {finishedMatches.map((match) => (
+              <MatchCard key={match.id} match={match} variant="compact" />
+            ))}
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-[11px] font-bold text-white/30 uppercase tracking-[0.2em] mb-4">
             Pool A
           </h2>
           <div className="ucl-panel rounded-2xl overflow-hidden border border-white/8 mb-8">
@@ -456,13 +506,6 @@ export default function StandingsScreen() {
         </section>
 
         <section>
-          <h2 className="text-[11px] font-bold text-white/30 uppercase tracking-[0.2em] mb-4">
-            Bracket
-          </h2>
-          <ACSCBracket />
-        </section>
-
-        <section>
           <h2 className="text-[11px] font-bold text-white/30 uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
             <Trophy className="w-4 h-4 text-yellow-500" />
             Tournament Awards
@@ -504,17 +547,6 @@ export default function StandingsScreen() {
                 <div className="text-lg font-bold text-white/40">TBD</div>
               </div>
             </div>
-          </div>
-        </section>
-
-        <section>
-          <h2 className="text-[11px] font-bold text-white/30 uppercase tracking-[0.2em] mb-4">
-            Recent Results
-          </h2>
-          <div className="space-y-3">
-            {finishedMatches.map((match) => (
-              <MatchCard key={match.id} match={match} variant="compact" />
-            ))}
           </div>
         </section>
       </div>
