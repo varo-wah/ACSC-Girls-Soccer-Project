@@ -348,10 +348,10 @@ export default function StandingsScreen() {
                     <img src={TEAMS.icsbk.logo} className="w-5 h-5 object-contain" />
                     ICS BKK
                   </td>
-                  <td className="px-4 py-3 text-white/80 text-center">1</td>
+                  <td className="px-4 py-3 text-white/80 text-center">2</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
                   <td className="px-4 py-3 text-white/80 text-center">1</td>
-                  <td className="px-4 py-3 text-white/80 text-center">4</td>
+                  <td className="px-4 py-3 text-white/80 text-center">7</td>
                 </tr>
 
                 <tr className="hover:bg-white/5 transition-colors">
@@ -361,7 +361,7 @@ export default function StandingsScreen() {
                     DALAT
                   </td>
                   <td className="px-4 py-3 text-white/80 text-center">1</td>
-                  <td className="px-4 py-3 text-white/80 text-center">1</td>
+                  <td className="px-4 py-3 text-white/80 text-center">2</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
                   <td className="px-4 py-3 text-white/80 text-center">3</td>
                 </tr>
@@ -373,7 +373,7 @@ export default function StandingsScreen() {
                     SPH
                   </td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
-                  <td className="px-4 py-3 text-white/80 text-center">2</td>
+                  <td className="px-4 py-3 text-white/80 text-center">3</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
                   <td className="px-4 py-3 text-white/80 text-center">0</td>
                 </tr>
