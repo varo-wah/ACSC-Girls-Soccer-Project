@@ -1,5 +1,5 @@
 import { Trophy, Star, Shield, Hand } from 'lucide-react';
-import { MATCHES, TEAMS, BRACKET_DATA } from '../data';
+import { MATCHES, TEAMS } from '../data';
 import MatchCard from '../components/MatchCard';
 import { Team } from '../types';
 
@@ -7,8 +7,8 @@ type BracketCardData = {
   id: string;
   label: string;
   dateLabel: string;
-  home?: string;
-  away?: string;
+  home: string;
+  away: string;
   homeTeam?: Team;
   awayTeam?: Team;
   tone: 'pink' | 'gold' | 'blue';
@@ -31,6 +31,49 @@ const placementMatches: BracketCardData[] = [
   { id: 'p7', label: '7th Place Game', dateLabel: '11 Apr, 08:00', home: 'LG6', away: 'LG8', tone: 'blue' },
 ];
 
+const quarterfinals: BracketCardData[] = [
+  {
+    id: 'q1',
+    label: 'Game 1',
+    dateLabel: '10 Apr, 08:00',
+    home: 'ICS BKK',
+    away: 'YISS',
+    homeTeam: TEAMS.icsbk,
+    awayTeam: TEAMS.yiss,
+    tone: 'pink',
+  },
+  {
+    id: 'q2',
+    label: 'Game 2',
+    dateLabel: '10 Apr, 08:00',
+    home: 'FAITH',
+    away: 'DALAT',
+    homeTeam: TEAMS.fa,
+    awayTeam: TEAMS.dalat,
+    tone: 'pink',
+  },
+  {
+    id: 'q3',
+    label: 'Game 3',
+    dateLabel: '10 Apr, 09:30',
+    home: 'GRACE',
+    away: 'SPH',
+    homeTeam: TEAMS.gis,
+    awayTeam: TEAMS.sph,
+    tone: 'pink',
+  },
+  {
+    id: 'q4',
+    label: 'Game 4',
+    dateLabel: '10 Apr, 09:30',
+    home: 'ICS HK',
+    away: 'MAC',
+    homeTeam: TEAMS.icshk,
+    awayTeam: TEAMS.mac,
+    tone: 'pink',
+  },
+];
+
 const semifinals: BracketCardData[] = [
   {
     id: 's1',
@@ -46,8 +89,10 @@ const semifinals: BracketCardData[] = [
     id: 's2',
     label: 'Semi Final #2',
     dateLabel: '10 Apr, 16:00',
-    home: 'WG3',
-    away: 'WG4',
+    home: 'GRACE',
+    away: 'MAC',
+    homeTeam: TEAMS.gis,
+    awayTeam: TEAMS.mac,
     tone: 'gold',
   },
 ];
@@ -67,23 +112,13 @@ const loserCrossovers: BracketCardData[] = [
     id: 'l2',
     label: 'Loser Crossover',
     dateLabel: '10 Apr, 16:00',
-    home: 'LG3',
-    away: 'LG4',
+    home: 'SPH',
+    away: 'ICS HK',
+    homeTeam: TEAMS.sph,
+    awayTeam: TEAMS.icshk,
     tone: 'gold',
   },
 ];
-
-const quarterfinals: BracketCardData[] =
-  BRACKET_DATA.find((round) => round.id === 'qf')?.matches.map((match, index) => ({
-    id: match.id,
-    label: `Game ${index + 1}`,
-    dateLabel: match.dateLabel || '',
-    home: match.homeTeam?.shortName || match.homeTeamPlaceholder || '',
-    away: match.awayTeam?.shortName || match.awayTeamPlaceholder || '',
-    homeTeam: match.homeTeam,
-    awayTeam: match.awayTeam,
-    tone: 'pink' as const,
-  })) || [];
 
 function toneClasses(tone: BracketCardData['tone']) {
   switch (tone) {
