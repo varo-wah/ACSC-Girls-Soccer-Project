@@ -11,6 +11,8 @@ type BracketCardData = {
   away: string;
   homeTeam?: Team;
   awayTeam?: Team;
+  homeScore?: number;
+  awayScore?: number;
   tone: 'pink' | 'gold' | 'blue';
 };
 
@@ -24,13 +26,6 @@ const LINE_GOLD = 'rgba(251,191,36,0.45)';
 const LINE_BLUE = 'rgba(125,211,252,0.5)';
 const LINE_MUTED = 'rgba(255,255,255,0.18)';
 
-const placementMatches: BracketCardData[] = [
-  { id: 'f', label: 'Championship Match', dateLabel: '11 Apr, 14:00', home: 'WG5', away: 'WG7', tone: 'gold' },
-  { id: 'p3', label: '3rd Place Game', dateLabel: '11 Apr, 11:00', home: 'LG5', away: 'LG7', tone: 'blue' },
-  { id: 'p5', label: '5th Place Game', dateLabel: '11 Apr, 09:30', home: 'WG6', away: 'WG8', tone: 'gold' },
-  { id: 'p7', label: '7th Place Game', dateLabel: '11 Apr, 08:00', home: 'LG6', away: 'LG8', tone: 'blue' },
-];
-
 const quarterfinals: BracketCardData[] = [
   {
     id: 'q1',
@@ -40,6 +35,8 @@ const quarterfinals: BracketCardData[] = [
     away: 'YISS',
     homeTeam: TEAMS.icsbk,
     awayTeam: TEAMS.yiss,
+    homeScore: 3,
+    awayScore: 0,
     tone: 'pink',
   },
   {
@@ -50,6 +47,8 @@ const quarterfinals: BracketCardData[] = [
     away: 'DALAT',
     homeTeam: TEAMS.fa,
     awayTeam: TEAMS.dalat,
+    homeScore: 3,
+    awayScore: 1,
     tone: 'pink',
   },
   {
@@ -60,6 +59,8 @@ const quarterfinals: BracketCardData[] = [
     away: 'SPH',
     homeTeam: TEAMS.gis,
     awayTeam: TEAMS.sph,
+    homeScore: 6,
+    awayScore: 0,
     tone: 'pink',
   },
   {
@@ -70,6 +71,8 @@ const quarterfinals: BracketCardData[] = [
     away: 'MAC',
     homeTeam: TEAMS.icshk,
     awayTeam: TEAMS.mac,
+    homeScore: 0,
+    awayScore: 1,
     tone: 'pink',
   },
 ];
@@ -83,6 +86,8 @@ const semifinals: BracketCardData[] = [
     away: 'FAITH',
     homeTeam: TEAMS.icsbk,
     awayTeam: TEAMS.fa,
+    homeScore: 4,
+    awayScore: 0,
     tone: 'gold',
   },
   {
@@ -93,6 +98,8 @@ const semifinals: BracketCardData[] = [
     away: 'MAC',
     homeTeam: TEAMS.gis,
     awayTeam: TEAMS.mac,
+    homeScore: 2,
+    awayScore: 1,
     tone: 'gold',
   },
 ];
@@ -106,6 +113,8 @@ const loserCrossovers: BracketCardData[] = [
     away: 'DALAT',
     homeTeam: TEAMS.yiss,
     awayTeam: TEAMS.dalat,
+    homeScore: 0,
+    awayScore: 2,
     tone: 'gold',
   },
   {
@@ -116,7 +125,52 @@ const loserCrossovers: BracketCardData[] = [
     away: 'ICS HK',
     homeTeam: TEAMS.sph,
     awayTeam: TEAMS.icshk,
+    homeScore: 0,
+    awayScore: 5,
     tone: 'gold',
+  },
+];
+
+const placementMatches: BracketCardData[] = [
+  {
+    id: 'f',
+    label: 'Championship Match',
+    dateLabel: '11 Apr, 14:00',
+    home: 'ICS BKK',
+    away: 'GRACE',
+    homeTeam: TEAMS.icsbk,
+    awayTeam: TEAMS.gis,
+    tone: 'gold',
+  },
+  {
+    id: 'p3',
+    label: '3rd Place Game',
+    dateLabel: '11 Apr, 11:00',
+    home: 'FAITH',
+    away: 'MAC',
+    homeTeam: TEAMS.fa,
+    awayTeam: TEAMS.mac,
+    tone: 'blue',
+  },
+  {
+    id: 'p5',
+    label: '5th Place Game',
+    dateLabel: '11 Apr, 09:30',
+    home: 'DALAT',
+    away: 'ICS HK',
+    homeTeam: TEAMS.dalat,
+    awayTeam: TEAMS.icshk,
+    tone: 'gold',
+  },
+  {
+    id: 'p7',
+    label: '7th Place Game',
+    dateLabel: '11 Apr, 08:00',
+    home: 'YISS',
+    away: 'SPH',
+    homeTeam: TEAMS.yiss,
+    awayTeam: TEAMS.sph,
+    tone: 'blue',
   },
 ];
 
@@ -165,7 +219,9 @@ function BracketBox({ card }: { card: BracketCardData }) {
             {card.home}
           </span>
         </div>
-        <span className="text-xl font-bold text-white/75">-</span>
+        <span className="text-xl font-bold text-white">
+          {card.homeScore !== undefined ? card.homeScore : '-'}
+        </span>
       </div>
 
       <div className="px-4 py-3 border-t border-white/8 flex items-center justify-between">
@@ -188,7 +244,9 @@ function BracketBox({ card }: { card: BracketCardData }) {
             {card.away}
           </span>
         </div>
-        <span className="text-xl font-bold text-white/75">-</span>
+        <span className="text-xl font-bold text-white">
+          {card.awayScore !== undefined ? card.awayScore : '-'}
+        </span>
       </div>
     </div>
   );
