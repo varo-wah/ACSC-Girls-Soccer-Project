@@ -16,11 +16,11 @@ type BracketCardData = {
   tone: 'pink' | 'gold' | 'blue';
 };
 
-const CARD_WIDTH = 238;
-const CARD_HEIGHT = 152;
+const CARD_WIDTH = 280;
+const CARD_HEIGHT = 190;
 const LEFT = 28;
 const TOP = 92;
-const COL_GAP = 96;
+const COL_GAP = 150;
 const LINE_PINK = 'rgba(244,114,182,0.55)';
 const LINE_GOLD = 'rgba(251,191,36,0.45)';
 const LINE_BLUE = 'rgba(125,211,252,0.5)';
@@ -160,6 +160,8 @@ const placementMatches: BracketCardData[] = [
     away: 'ICS HK',
     homeTeam: TEAMS.dalat,
     awayTeam: TEAMS.icshk,
+    homeScore: 1,
+    awayScore: 3,
     tone: 'gold',
   },
   {
@@ -170,6 +172,8 @@ const placementMatches: BracketCardData[] = [
     away: 'SPH',
     homeTeam: TEAMS.yiss,
     awayTeam: TEAMS.sph,
+    homeScore: 0,
+    awayScore: 2,
     tone: 'blue',
   },
 ];
@@ -188,7 +192,7 @@ function toneClasses(tone: BracketCardData['tone']) {
 function BracketBox({ card }: { card: BracketCardData }) {
   return (
     <div
-      className={`w-[238px] h-[152px] rounded-[22px] overflow-hidden border border-white/8 bg-gradient-to-br ${toneClasses(
+      className={`w-[280px] h-[190px] rounded-[22px] overflow-hidden border border-white/8 bg-gradient-to-br ${toneClasses(
         card.tone
       )} shadow-[0_18px_36px_rgba(0,0,0,0.28)] backdrop-blur-md`}
     >
@@ -199,9 +203,9 @@ function BracketBox({ card }: { card: BracketCardData }) {
         </div>
       </div>
 
-      <div className="px-4 py-3 flex items-center justify-between bg-white/[0.03]">
+      <div className="px-4 py-3 flex items-center justify-between gap-4 bg-white/[0.03]">
         <div className="flex items-center gap-3 min-w-0">
-          <div className="w-8 h-8 rounded-full bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
+          <div className="w-10 h-10 rounded-full bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
             {card.homeTeam ? (
               <div className={`w-full h-full rounded-full flex items-center justify-center ${card.homeTeam.id === 'fa' ? 'bg-white p-1' : ''}`}>
                 <img
@@ -219,14 +223,14 @@ function BracketBox({ card }: { card: BracketCardData }) {
             {card.home}
           </span>
         </div>
-        <span className="text-xl font-bold text-white">
+        <span className="text-3xl font-extrabold text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.4)] min-w-[40px] text-right">
           {card.homeScore !== undefined ? card.homeScore : '-'}
         </span>
       </div>
 
-      <div className="px-4 py-3 border-t border-white/8 flex items-center justify-between">
+      <div className="px-4 py-3 border-t border-white/8 flex items-center justify-between gap-4">
         <div className="flex items-center gap-3 min-w-0">
-          <div className="w-8 h-8 rounded-full bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
+          <div className="w-10 h-10 rounded-full bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
             {card.awayTeam ? (
               <div className={`w-full h-full rounded-full flex items-center justify-center ${card.awayTeam.id === 'fa' ? 'bg-white p-1' : ''}`}>
                 <img
@@ -244,7 +248,7 @@ function BracketBox({ card }: { card: BracketCardData }) {
             {card.away}
           </span>
         </div>
-        <span className="text-xl font-bold text-white">
+        <span className="text-3xl font-extrabold text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.4)] min-w-[40px] text-right">
           {card.awayScore !== undefined ? card.awayScore : '-'}
         </span>
       </div>
@@ -294,18 +298,18 @@ function drawConnector(fromX: number, fromY: number, toX: number, toY: number, c
 function ACSCBracket() {
   const colX = (index: number) => LEFT + index * (CARD_WIDTH + COL_GAP);
 
-  const qfY = [TOP, TOP + 156, TOP + 352, TOP + 508];
-  const sfY = [TOP + 88, TOP + 430];
-  const loserY = [TOP + 692, TOP + 872];
+  const qfY = [TOP, TOP + 190, TOP + 430, TOP + 620];
+  const sfY = [TOP + 110, TOP + 520];
+  const loserY = [TOP + 860, TOP + 1080];
 
   const rightY = {
-    final: TOP + 238,
-    third: TOP + 492,
-    fifth: TOP + 780,
-    seventh: TOP + 960,
+    final: TOP + 300,
+    third: TOP + 610,
+    fifth: TOP + 980,
+    seventh: TOP + 1210,
   };
 
-  const canvasHeight = 1180;
+  const canvasHeight = 1500;
 
   const qfCenters = qfY.map((y) => y + CARD_HEIGHT / 2);
   const sfCenters = sfY.map((y) => y + CARD_HEIGHT / 2);
@@ -318,8 +322,8 @@ function ACSCBracket() {
   };
 
   return (
-    <div className="overflow-x-auto no-scrollbar -mx-6 px-6">
-      <div className="relative min-w-[1130px]" style={{ height: `${canvasHeight}px` }}>
+    <div className="overflow-x-auto no-scrollbar -mx-6 px-2">
+      <div className="w-[1320px] origin-top-left scale-[0.82] sm:scale-[0.9] md:scale-100 relative" style={{ height: `${canvasHeight}px` }}>
         {/* Titles */}
         <div className="absolute text-center" style={{ left: `${colX(0)}px`, top: '20px', width: `${CARD_WIDTH}px` }}>
           <h2 className="text-[11px] uppercase tracking-[0.24em] text-slate-400">Quarterfinals</h2>
@@ -405,7 +409,7 @@ function ACSCBracket() {
         <div
           className="absolute flex flex-col items-center"
           style={{
-            left: `${colX(3) - 8}px`,
+            left: `${colX(3) + 30}px`,
             top: `${rightY.final + 6}px`,
             width: '120px',
           }}

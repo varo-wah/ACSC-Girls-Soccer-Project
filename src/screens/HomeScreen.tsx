@@ -162,20 +162,33 @@ export default function HomeScreen({ onSelectTeam }: HomeScreenProps) {
           {liveMatches.length > 0 ? 'Live Matches' : 'Next Match'}
         </h2>
 
-        <div className="flex overflow-x-auto no-scrollbar gap-4 pb-4">
-          {topHeroMatches.map((match) => (
-            <div key={match.id} className="min-w-[300px]">
-              <MatchCard
-                match={{
-                  ...match,
-                  status: liveMatches.some((liveMatch) => liveMatch.id === match.id) ? 'Live' : match.status,
-                }}
-                variant="featured"
-                highlightLive={liveMatches.some((liveMatch) => liveMatch.id === match.id)}
-              />
-            </div>
-          ))}
-        </div>
+        {topHeroMatches.length === 1 ? (
+          <div className="px-1">
+            <MatchCard
+              match={{
+                ...topHeroMatches[0],
+                status: liveMatches.some((liveMatch) => liveMatch.id === topHeroMatches[0].id) ? 'Live' : topHeroMatches[0].status,
+              }}
+              variant="featured"
+              highlightLive={liveMatches.some((liveMatch) => liveMatch.id === topHeroMatches[0].id)}
+            />
+          </div>
+        ) : (
+          <div className="flex overflow-x-auto no-scrollbar gap-4 pb-4">
+            {topHeroMatches.map((match) => (
+              <div key={match.id} className="min-w-[300px]">
+                <MatchCard
+                  match={{
+                    ...match,
+                    status: liveMatches.some((liveMatch) => liveMatch.id === match.id) ? 'Live' : match.status,
+                  }}
+                  variant="featured"
+                  highlightLive={liveMatches.some((liveMatch) => liveMatch.id === match.id)}
+                />
+              </div>
+            ))}
+          </div>
+        )}
 
         <div className="flex justify-center mt-1 mb-4">
           <a
