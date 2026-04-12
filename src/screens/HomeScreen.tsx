@@ -90,6 +90,8 @@ export default function HomeScreen({ onSelectTeam }: HomeScreenProps) {
       !liveMatches.some((liveMatch) => liveMatch.id === m.id)
   ) as Match[];
 
+  const hasFutureMatches = allUpcomingMatches.length > 0 || liveMatches.length > 0;
+
   const topHeroMatches =
     liveMatches.length > 0
       ? liveMatches.slice(0, 2)
@@ -155,83 +157,85 @@ export default function HomeScreen({ onSelectTeam }: HomeScreenProps) {
         </div>
       </div>
 
-      <section className="mb-10 px-4">
-        <h2 className={`text-[11px] font-bold uppercase tracking-[0.2em] mb-4 px-2 ${
-          liveMatches.length > 0 ? 'text-red-300 animate-pulse' : 'text-white/30'
-        }`}>
-          {liveMatches.length > 0 ? 'Live Matches' : 'Next Match'}
-        </h2>
+      {hasFutureMatches && (
+        <section className="mb-10 px-4">
+          <h2 className={`text-[11px] font-bold uppercase tracking-[0.2em] mb-4 px-2 ${
+            liveMatches.length > 0 ? 'text-red-300 animate-pulse' : 'text-white/30'
+          }`}>
+            {liveMatches.length > 0 ? 'Live Matches' : 'Next Match'}
+          </h2>
 
-        {topHeroMatches.length === 1 ? (
-          <div className="px-1">
-            <MatchCard
-              match={{
-                ...topHeroMatches[0],
-                status: liveMatches.some((liveMatch) => liveMatch.id === topHeroMatches[0].id) ? 'Live' : topHeroMatches[0].status,
-              }}
-              variant="featured"
-              highlightLive={liveMatches.some((liveMatch) => liveMatch.id === topHeroMatches[0].id)}
-            />
+          {topHeroMatches.length === 1 ? (
+            <div className="px-1">
+              <MatchCard
+                match={{
+                  ...topHeroMatches[0],
+                  status: liveMatches.some((liveMatch) => liveMatch.id === topHeroMatches[0].id) ? 'Live' : topHeroMatches[0].status,
+                }}
+                variant="featured"
+                highlightLive={liveMatches.some((liveMatch) => liveMatch.id === topHeroMatches[0].id)}
+              />
+            </div>
+          ) : (
+            <div className="flex overflow-x-auto no-scrollbar gap-4 pb-4">
+              {topHeroMatches.map((match) => (
+                <div key={match.id} className="min-w-[300px]">
+                  <MatchCard
+                    match={{
+                      ...match,
+                      status: liveMatches.some((liveMatch) => liveMatch.id === match.id) ? 'Live' : match.status,
+                    }}
+                    variant="featured"
+                    highlightLive={liveMatches.some((liveMatch) => liveMatch.id === match.id)}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div className="flex justify-center mt-1 mb-4">
+            <a
+              href="https://youtube.com/playlist?list=PLnDGQGJCZlGEzYGwG54Vu9jO4YT2G1uhS&si=kSQSHBFPkB1KHESL"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center gap-2 text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all ${
+                liveMatches.length > 0
+                  ? 'bg-red-500 hover:bg-red-400 shadow-[0_0_28px_rgba(239,68,68,0.75)] animate-pulse'
+                  : 'bg-pink-600 hover:bg-pink-500 shadow-[0_0_20px_rgba(244,114,182,0.4)]'
+              }`}
+            >
+              <PlayCircle className="w-4 h-4" />
+              Watch Live
+            </a>
           </div>
-        ) : (
-          <div className="flex overflow-x-auto no-scrollbar gap-4 pb-4">
-            {topHeroMatches.map((match) => (
+        </section>
+      )}
+
+      {hasFutureMatches && (
+        <section className="mb-10 mt-6">
+          <h2 className="text-[11px] font-bold text-white/30 uppercase tracking-[0.2em] mb-4 px-6">
+            {APP_COPY.sectionUpcoming}
+          </h2>
+          <div className="flex overflow-x-auto no-scrollbar px-4 gap-4 pb-4">
+            {topRowMatches.map(match => (
               <div key={match.id} className="min-w-[300px]">
                 <MatchCard
-                  match={{
-                    ...match,
-                    status: liveMatches.some((liveMatch) => liveMatch.id === match.id) ? 'Live' : match.status,
-                  }}
+                  match={match}
                   variant="featured"
-                  highlightLive={liveMatches.some((liveMatch) => liveMatch.id === match.id)}
                 />
               </div>
             ))}
           </div>
-        )}
+        </section>
+      )}
 
-        <div className="flex justify-center mt-1 mb-4">
-          <a
-            href="https://youtube.com/playlist?list=PLnDGQGJCZlGEzYGwG54Vu9jO4YT2G1uhS&si=kSQSHBFPkB1KHESL"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`flex items-center gap-2 text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all ${
-              liveMatches.length > 0
-                ? 'bg-red-500 hover:bg-red-400 shadow-[0_0_28px_rgba(239,68,68,0.75)] animate-pulse'
-                : 'bg-pink-600 hover:bg-pink-500 shadow-[0_0_20px_rgba(244,114,182,0.4)]'
-            }`}
-          >
-            <PlayCircle className="w-4 h-4" />
-            Watch Live
-          </a>
-        </div>
-      </section>
-
-      <section className="mb-10 mt-6">
-        <h2 className="text-[11px] font-bold text-white/30 uppercase tracking-[0.2em] mb-4 px-6">
-          {APP_COPY.sectionUpcoming}
-        </h2>
-        <div className="flex overflow-x-auto no-scrollbar px-4 gap-4 pb-4">
-          {topRowMatches.map(match => (
-            <div key={match.id} className="min-w-[300px]">
-              <MatchCard
-                match={match}
-                variant="featured"
-              />
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="mb-10">
-        <h2 className="text-[11px] font-bold text-white/30 uppercase tracking-[0.2em] mb-4 px-6">
+      <section className="mb-10 px-4">
+        <h2 className="text-[11px] font-bold text-white/30 uppercase tracking-[0.2em] mb-4 px-2">
           Finished Matches
         </h2>
-        <div className="flex overflow-x-auto no-scrollbar px-4 gap-4 pb-4">
+        <div className="space-y-4">
           {HOME_FINISHED_MATCHES.map(match => (
-            <div key={match.id} className="min-w-[300px]">
-              <MatchCard match={match} variant="compact" />
-            </div>
+            <MatchCard key={match.id} match={match} variant="featured" />
           ))}
         </div>
       </section>

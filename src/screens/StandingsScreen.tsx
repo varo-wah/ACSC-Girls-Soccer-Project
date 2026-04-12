@@ -16,7 +16,7 @@ type BracketCardData = {
   tone: 'pink' | 'gold' | 'blue';
 };
 
-const CARD_WIDTH = 280;
+const CARD_WIDTH = 260;
 const CARD_HEIGHT = 190;
 const LEFT = 28;
 const TOP = 92;
@@ -140,6 +140,8 @@ const placementMatches: BracketCardData[] = [
     away: 'GRACE',
     homeTeam: TEAMS.icsbk,
     awayTeam: TEAMS.gis,
+    homeScore: 2,
+    awayScore: 0,
     tone: 'gold',
   },
   {
@@ -150,6 +152,8 @@ const placementMatches: BracketCardData[] = [
     away: 'MAC',
     homeTeam: TEAMS.fa,
     awayTeam: TEAMS.mac,
+    homeScore: 3,
+    awayScore: 0,
     tone: 'blue',
   },
   {
@@ -192,7 +196,7 @@ function toneClasses(tone: BracketCardData['tone']) {
 function BracketBox({ card }: { card: BracketCardData }) {
   return (
     <div
-      className={`w-[280px] h-[190px] rounded-[22px] overflow-hidden border border-white/8 bg-gradient-to-br ${toneClasses(
+      className={`w-[260px] h-[190px] rounded-[22px] overflow-hidden border border-white/8 bg-gradient-to-br ${toneClasses(
         card.tone
       )} shadow-[0_18px_36px_rgba(0,0,0,0.28)] backdrop-blur-md`}
     >
@@ -323,7 +327,7 @@ function ACSCBracket() {
 
   return (
     <div className="overflow-x-auto no-scrollbar -mx-6 px-2">
-      <div className="w-[1320px] origin-top-left scale-[0.82] sm:scale-[0.9] md:scale-100 relative" style={{ height: `${canvasHeight}px` }}>
+      <div className="w-[1200px] origin-top-left scale-[0.7] sm:scale-[0.8] md:scale-[0.9] lg:scale-100 relative" style={{ height: `${canvasHeight}px` }}>
         {/* Titles */}
         <div className="absolute text-center" style={{ left: `${colX(0)}px`, top: '20px', width: `${CARD_WIDTH}px` }}>
           <h2 className="text-[11px] uppercase tracking-[0.24em] text-slate-400">Quarterfinals</h2>
@@ -442,6 +446,158 @@ export default function StandingsScreen() {
       </header>
 
       <div className="p-6 space-y-8">
+        <section>
+          <h2 className="text-[11px] font-bold text-white/30 uppercase tracking-[0.2em] mb-4">
+            Final Leaderboard
+          </h2>
+
+          <div className="flex overflow-x-auto no-scrollbar gap-4 pb-4">
+            <div className="min-w-[220px] ucl-panel rounded-[24px] p-5 border border-yellow-400/25 bg-gradient-to-br from-yellow-500/18 to-transparent">
+              <div className="text-[10px] uppercase tracking-[0.18em] text-yellow-300/80 font-bold mb-3">1st Place</div>
+              <div className="flex items-center gap-3">
+                <div className="w-14 h-14 rounded-full bg-white/8 border border-white/10 flex items-center justify-center p-2">
+                  <img src={TEAMS.icsbk.logo} alt={TEAMS.icsbk.name} className="w-full h-full object-contain" />
+                </div>
+                <div>
+                  <div className="text-lg font-extrabold text-white">ICS BKK</div>
+                  <div className="text-sm text-yellow-200/80">Champion</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="min-w-[220px] ucl-panel rounded-[24px] p-5 border border-slate-300/20 bg-gradient-to-br from-slate-300/12 to-transparent">
+              <div className="text-[10px] uppercase tracking-[0.18em] text-slate-300/80 font-bold mb-3">2nd Place</div>
+              <div className="flex items-center gap-3">
+                <div className="w-14 h-14 rounded-full bg-white/8 border border-white/10 flex items-center justify-center p-2">
+                  <img src={TEAMS.gis.logo} alt={TEAMS.gis.name} className="w-full h-full object-contain" />
+                </div>
+                <div>
+                  <div className="text-lg font-extrabold text-white">GRACE</div>
+                  <div className="text-sm text-slate-200/80">Runner-up</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="min-w-[220px] ucl-panel rounded-[24px] p-5 border border-amber-600/20 bg-gradient-to-br from-amber-700/14 to-transparent">
+              <div className="text-[10px] uppercase tracking-[0.18em] text-amber-300/80 font-bold mb-3">3rd Place</div>
+              <div className="flex items-center gap-3">
+                <div className="w-14 h-14 rounded-full bg-white/8 border border-white/10 flex items-center justify-center p-2">
+                  <div className="w-full h-full rounded-full bg-white p-1 flex items-center justify-center">
+                    <img src={TEAMS.fa.logo} alt={TEAMS.fa.name} className="w-full h-full object-contain" />
+                  </div>
+                </div>
+                <div>
+                  <div className="text-lg font-extrabold text-white">FAITH</div>
+                  <div className="text-sm text-amber-200/80">3rd place</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="min-w-[200px] ucl-panel rounded-[24px] p-5 border border-white/8">
+              <div className="text-[10px] uppercase tracking-[0.18em] text-white/40 font-bold mb-3">4th Place</div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-white/8 border border-white/10 flex items-center justify-center p-2">
+                  <img src={TEAMS.mac.logo} alt={TEAMS.mac.name} className="w-full h-full object-contain" />
+                </div>
+                <div className="text-base font-bold text-white">MAC</div>
+              </div>
+            </div>
+
+            <div className="min-w-[200px] ucl-panel rounded-[24px] p-5 border border-white/8">
+              <div className="text-[10px] uppercase tracking-[0.18em] text-white/40 font-bold mb-3">5th Place</div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-white/8 border border-white/10 flex items-center justify-center p-2">
+                  <img src={TEAMS.icshk.logo} alt={TEAMS.icshk.name} className="w-full h-full object-contain" />
+                </div>
+                <div className="text-base font-bold text-white">ICS HK</div>
+              </div>
+            </div>
+
+            <div className="min-w-[200px] ucl-panel rounded-[24px] p-5 border border-white/8">
+              <div className="text-[10px] uppercase tracking-[0.18em] text-white/40 font-bold mb-3">6th Place</div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-white/8 border border-white/10 flex items-center justify-center p-2">
+                  <img src={TEAMS.dalat.logo} alt={TEAMS.dalat.name} className="w-full h-full object-contain" />
+                </div>
+                <div className="text-base font-bold text-white">DALAT</div>
+              </div>
+            </div>
+
+            <div className="min-w-[200px] ucl-panel rounded-[24px] p-5 border border-white/8">
+              <div className="text-[10px] uppercase tracking-[0.18em] text-white/40 font-bold mb-3">7th Place</div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-white/8 border border-white/10 flex items-center justify-center p-2">
+                  <img src={TEAMS.sph.logo} alt={TEAMS.sph.name} className="w-full h-full object-contain" />
+                </div>
+                <div className="text-base font-bold text-white">SPH</div>
+              </div>
+            </div>
+
+            <div className="min-w-[200px] ucl-panel rounded-[24px] p-5 border border-white/8">
+              <div className="text-[10px] uppercase tracking-[0.18em] text-white/40 font-bold mb-3">8th Place</div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-white/8 border border-white/10 flex items-center justify-center p-2">
+                  <img src={TEAMS.yiss.logo} alt={TEAMS.yiss.name} className="w-full h-full object-contain" />
+                </div>
+                <div className="text-base font-bold text-white">YISS</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-[11px] font-bold text-white/30 uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
+            <Trophy className="w-4 h-4 text-yellow-500" />
+            Tournament Awards
+          </h2>
+
+          <div className="grid grid-cols-1 gap-4">
+            <div className="ucl-panel rounded-[20px] p-5 border border-yellow-500/20 flex items-center gap-4 bg-gradient-to-br from-yellow-500/10 to-transparent">
+              <div className="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center">
+                <Trophy className="w-6 h-6 text-yellow-400" />
+              </div>
+              <div>
+                <div className="text-[10px] uppercase tracking-widest text-yellow-500/80 font-bold mb-1">Golden Boot</div>
+                <div className="text-lg font-bold text-white">Vivi Sojoeiya</div>
+                <div className="text-sm text-white/55">ICS BKK</div>
+              </div>
+            </div>
+
+            <div className="ucl-panel rounded-[20px] p-5 border border-slate-400/20 flex items-center gap-4 bg-gradient-to-br from-slate-400/10 to-transparent">
+              <div className="w-12 h-12 rounded-full bg-slate-400/20 flex items-center justify-center">
+                <Hand className="w-6 h-6 text-slate-300" />
+              </div>
+              <div>
+                <div className="text-[10px] uppercase tracking-widest text-slate-400/80 font-bold mb-1">Golden Glove</div>
+                <div className="text-lg font-bold text-white">Gwen Lee</div>
+                <div className="text-sm text-white/55">SPH</div>
+              </div>
+            </div>
+
+            <div className="ucl-panel rounded-[20px] p-5 border border-blue-500/20 flex items-center gap-4 bg-gradient-to-br from-blue-500/10 to-transparent">
+              <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
+                <Shield className="w-6 h-6 text-blue-400" />
+              </div>
+              <div>
+                <div className="text-[10px] uppercase tracking-widest text-blue-400/80 font-bold mb-1">Best Defender</div>
+                <div className="text-lg font-bold text-white">Seeeun Lee</div>
+                <div className="text-sm text-white/55">GRACE</div>
+              </div>
+            </div>
+
+            <div className="ucl-panel rounded-[20px] p-5 border border-pink-500/20 flex items-center gap-4 bg-gradient-to-br from-pink-500/10 to-transparent">
+              <div className="w-12 h-12 rounded-full bg-pink-500/20 flex items-center justify-center">
+                <Star className="w-6 h-6 text-pink-400" />
+              </div>
+              <div>
+                <div className="text-[10px] uppercase tracking-widest text-pink-400/80 font-bold mb-1">MVP</div>
+                <div className="text-lg font-bold text-white">Hope Chang</div>
+                <div className="text-sm text-white/55">ICS BKK</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section>
           <h2 className="text-[11px] font-bold text-white/30 uppercase tracking-[0.2em] mb-4">
             Bracket
@@ -599,51 +755,6 @@ export default function StandingsScreen() {
                 </tr>
               </tbody>
             </table>
-          </div>
-        </section>
-
-        <section>
-          <h2 className="text-[11px] font-bold text-white/30 uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
-            <Trophy className="w-4 h-4 text-yellow-500" />
-            Tournament Awards
-          </h2>
-          <div className="grid grid-cols-1 gap-4">
-            <div className="ucl-panel rounded-[20px] p-5 border border-yellow-500/20 flex items-center gap-4 bg-gradient-to-br from-yellow-500/10 to-transparent">
-              <div className="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center">
-                <Trophy className="w-6 h-6 text-yellow-400" />
-              </div>
-              <div>
-                <div className="text-[10px] uppercase tracking-widest text-yellow-500/80 font-bold mb-1">Golden Boot</div>
-                <div className="text-lg font-bold text-white/40">TBD</div>
-              </div>
-            </div>
-            <div className="ucl-panel rounded-[20px] p-5 border border-slate-400/20 flex items-center gap-4 bg-gradient-to-br from-slate-400/10 to-transparent">
-              <div className="w-12 h-12 rounded-full bg-slate-400/20 flex items-center justify-center">
-                <Hand className="w-6 h-6 text-slate-300" />
-              </div>
-              <div>
-                <div className="text-[10px] uppercase tracking-widest text-slate-400/80 font-bold mb-1">Golden Glove</div>
-                <div className="text-lg font-bold text-white/40">TBD</div>
-              </div>
-            </div>
-            <div className="ucl-panel rounded-[20px] p-5 border border-blue-500/20 flex items-center gap-4 bg-gradient-to-br from-blue-500/10 to-transparent">
-              <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
-                <Shield className="w-6 h-6 text-blue-400" />
-              </div>
-              <div>
-                <div className="text-[10px] uppercase tracking-widest text-blue-400/80 font-bold mb-1">Top Defender</div>
-                <div className="text-lg font-bold text-white/40">TBD</div>
-              </div>
-            </div>
-            <div className="ucl-panel rounded-[20px] p-5 border border-pink-500/20 flex items-center gap-4 bg-gradient-to-br from-pink-500/10 to-transparent">
-              <div className="w-12 h-12 rounded-full bg-pink-500/20 flex items-center justify-center">
-                <Star className="w-6 h-6 text-pink-400" />
-              </div>
-              <div>
-                <div className="text-[10px] uppercase tracking-widest text-pink-400/80 font-bold mb-1">MVP</div>
-                <div className="text-lg font-bold text-white/40">TBD</div>
-              </div>
-            </div>
           </div>
         </section>
       </div>
